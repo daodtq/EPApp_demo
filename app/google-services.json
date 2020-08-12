@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "473211475318",
+    "firebase_url": "https://epappdemo-14d22.firebaseio.com",
+    "project_id": "epappdemo-14d22",
+    "storage_bucket": "epappdemo-14d22.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:473211475318:android:4c97312d9c20ea80cb9657",
+        "android_client_info": {
+          "package_name": "com.example.epapp_demo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "473211475318-go81a3bt85pnevccd3ft96cpvgcsvq2j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDFLtwjq6e4d68N2uCZmp8DaYQixCwomLU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "473211475318-go81a3bt85pnevccd3ft96cpvgcsvq2j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

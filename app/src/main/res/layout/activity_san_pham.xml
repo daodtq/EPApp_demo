@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@android:color/white">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/cover"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <androidx.viewpager.widget.ViewPager
+                        android:id="@+id/pager"
+                        android:layout_width="match_parent"
+                        android:layout_height="250dp"
+                        android:background="@drawable/category_sushi"/>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="250dp"
+                        android:background="@android:color/black"
+                        android:alpha="0.3"/>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:id="@+id/back"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_centerInParent="true"
+                        android:src="@drawable/ic_back"
+                        android:tint="@color/white"/>
+
+                    <EditText
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:focusable="true"/>
+
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="8"
+                    android:textSize="14sp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:textColor="@color/white"/>
+
+                <RelativeLayout
+                    android:id="@+id/lnl_share"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2">
+
+                    <RelativeLayout
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/shape_circle"
+                        android:layout_centerInParent="true"
+                        android:elevation="2dp">
+
+                        <ImageView
+                            android:id="@+id/share"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_centerInParent="true"
+                            android:src="@drawable/ic_share"/>
+
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/lnl_favorite"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2">
+
+                    <RelativeLayout
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/shape_circle"
+                        android:layout_centerInParent="true"
+                        android:elevation="2dp">
+
+                        <ImageView
+                            android:id="@+id/favorite"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_centerInParent="true"
+                            android:src="@drawable/star2"/>
+
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_dots"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_above="@id/scrollView"
+                android:layout_marginBottom="20dp"
+                android:background="@android:color/transparent"
+                android:gravity="center"
+                android:orientation="horizontal" />
+
+            <RelativeLayout
+                android:id="@+id/scrollView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="-20dp"
+                android:background="@drawable/background_item"
+                android:layout_below="@+id/cover">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/item_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Món gì đó"
+                        android:textColor="@color/titleColor"
+                        android:textSize="24sp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginLeft="25dp"
+                        android:layout_marginRight="25dp"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_below="@id/item_name">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Giới thiệu"
+                            android:textColor="@color/grey_80"
+                            android:textSize="14sp"
+                            android:layout_marginTop="25dp"
+                            android:layout_marginLeft="25dp" />
+
+                        <TextView
+                            android:id="@+id/item_description"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Nó là 1 món gì đó mà chúng tôi chưa có rảnh mà ngồi viết nội dung vớ va vớ vẩn cho nó, xin lổi everybody!"
+                            android:textColor="@color/grey_40"
+                            android:textSize="14sp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginLeft="25dp"
+                            android:layout_marginRight="10dp"/>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <LinearLayout
+                                android:id="@+id/lnl_restaurant"
+                                android:layout_width="0dp"
+                                android:layout_height="35dp"
+                                android:layout_weight="1"
+                                android:layout_marginTop="25dp"
+                                android:layout_marginLeft="25dp"
+                                android:orientation="horizontal"
+                                android:background="@drawable/btn_rounded_sign">
+
+                                <RelativeLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_weight="2">
+
+                                    <ImageView
+                                        android:id="@+id/ic_restaurant"
+                                        android:layout_width="20dp"
+                                        android:layout_height="20dp"
+                                        android:layout_centerInParent="true"
+                                        android:src="@drawable/ic_food"
+                                        android:tint="@color/white"/>
+
+                                </RelativeLayout>
+
+                                <TextView
+                                    android:id="@+id/restaurant_name"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Đặt hàng"
+                                    android:layout_marginRight="15dp"
+                                    android:layout_toRightOf="@id/ic_restaurant"
+                                    android:textColor="@color/white"
+                                    android:textSize="16sp"
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_gravity="center_vertical"/>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"/>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0.7"/>
+
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Bạn có muốn thêm gì không?"
+                            android:textColor="@color/titleColor"
+                            android:textSize="20sp"
+                            android:layout_marginTop="25dp"
+                            android:layout_marginLeft="25dp" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recycler"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:focusable="false"
+                            tools:listitem="@layout/bonus_item"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Lưu ý thêm:"
+                            android:textColor="@color/titleColor"
+                            android:textSize="20sp"
+                            android:layout_marginTop="25dp"
+                            android:layout_marginLeft="25dp" />
+
+                        <EditText
+                            android:id="@+id/edit_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="150dp"
+                            android:layout_margin="25dp"
+                            android:textSize="16sp"
+                            android:hint="Bạn cần thêm gì?"
+                            android:inputType="text|textMultiLine"
+                            android:theme="@style/EditTextThemeObs"
+                            android:gravity="top"/>
+
+                        <RelativeLayout
+                            android:id="@+id/btn_checkout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fitsSystemWindows="true"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginBottom="20dp">
+
+                            <RelativeLayout
+                                android:id="@+id/lnl_whatsapp"
+                                android:layout_width="match_parent"
+                                android:layout_height="45dp"
+                                android:layout_marginRight="30dp"
+                                android:layout_marginLeft="30dp"
+                                android:background="@drawable/btn_rounded_sign">
+
+                                <ImageView
+                                    android:layout_width="20dp"
+                                    android:layout_height="20dp"
+                                    android:layout_marginLeft="20dp"
+                                    android:layout_centerVertical="true"
+                                    android:src="@drawable/ic_add"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Thêm vào giở hàng"
+                                    android:layout_centerInParent="true"
+                                    android:textColor="@color/white"/>
+
+                            </RelativeLayout>
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</RelativeLayout>

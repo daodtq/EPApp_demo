@@ -1,0 +1,537 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:background="@android:color/white">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="220dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    android:src="@drawable/splash6"
+                    android:scaleType="centerCrop"/>
+
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="220dp"
+                    android:background="@android:color/black"
+                    android:alpha="0.5"/>
+
+                <LinearLayout
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:id="@+id/back"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2">
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_centerInParent="true"
+                            android:src="@drawable/ic_back"
+                            android:tint="@color/white"/>
+
+                    </RelativeLayout>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="8"
+                        android:textSize="20sp"
+                        android:text="Tên Quán"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:textColor="@color/white"/>
+
+                    <RelativeLayout
+                        android:id="@+id/lnl_share"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2">
+
+                        <ImageView
+                            android:id="@+id/ic_favorite"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:src="@drawable/star2"
+                            android:layout_centerInParent="true"
+                            android:tint="@color/white"/>
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layout_place_header"
+                    android:layout_width="match_parent"
+                    android:layout_height="220dp"
+                    android:gravity="bottom"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginLeft="10dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/ic_location"
+                                android:layout_width="15dp"
+                                android:layout_height="15dp"
+                                android:src="@drawable/ic_location"
+                                android:tint="@color/green"/>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="22 Quang Trung, P7, Q. Gò Vấp"
+                                android:textColor="@color/white"
+                                android:textSize="16sp"
+                                android:layout_marginLeft="5sp" />
+
+                        </LinearLayout>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical">
+
+                            <androidx.appcompat.widget.AppCompatRatingBar
+                                android:id="@+id/place_rating"
+                                style="@style/Yellow.Small.AppCompatRatingBar"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_centerVertical="true"
+                                android:clickable="false"
+                                android:numStars="5"
+                                android:rating="3.5"
+                                android:stepSize="1"
+                                android:theme="@style/Yellow.Small.AppCompatRatingBar" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dp"
+                                android:textColor="@color/white"
+                                android:layout_toRightOf="@+id/place_rating"
+                                android:text="(245 đánh giá)"/>
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                    <View
+                        android:id="@+id/view1"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="@color/white"
+                        android:layout_marginTop="5dp"
+                        android:alpha="0.3"/>
+
+                    <LinearLayout
+                        android:id="@+id/place_info"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginBottom="30dp">
+
+                        <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="5">
+
+                            <TextView
+                                android:id="@+id/delivery_label"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Trạng Thái"
+                                android:textSize="16sp"
+                                android:textColor="@color/white" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Đang mở"
+                                android:layout_below="@+id/delivery_label"
+                                android:textColor="@color/green"
+                                android:textSize="14sp" />
+
+                            <View
+                                android:layout_width="1dp"
+                                android:layout_height="match_parent"
+                                android:background="@color/white"
+                                android:alpha="0.3"
+                                android:layout_alignParentRight="true"/>
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"/>
+
+                        <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="5">
+
+                            <TextView
+                                android:id="@+id/time_label"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Hoạt động"
+                                android:textSize="16sp"
+                                android:textColor="@color/white" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="8:00 AM - 10:00 PM"
+                                android:layout_below="@+id/time_label"
+                                android:textColor="@color/green"
+                                android:textSize="14sp" />
+
+                            <View
+                                android:layout_width="1dp"
+                                android:layout_height="match_parent"
+                                android:background="@color/white"
+                                android:alpha="0.3"
+                                android:layout_alignParentRight="true"/>
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"/>
+
+                        <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="5">
+
+                            <TextView
+                                android:id="@+id/label"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Quán"
+                                android:textSize="16sp"
+                                android:textColor="@color/white" />
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/label">
+
+                                <ImageView
+                                    android:layout_width="60dp"
+                                    android:layout_height="30dp"
+                                    android:src="@drawable/ic_food2"
+                                    android:layout_alignParentLeft="true"
+                                    android:tint="@color/green"/>
+
+                            </RelativeLayout>
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/place_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-20dp"
+                android:background="@drawable/background_item">
+
+                <!--<View-->
+                <!--android:id="@+id/view1"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="1dp"-->
+                <!--android:layout_marginTop="15dp"-->
+                <!--android:background="@color/overlay_dark_10"/>-->
+
+                <!--<View-->
+                <!--android:id="@+id/view2"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="1dp"-->
+                <!--android:layout_marginTop="15dp"-->
+                <!--android:background="@color/overlay_dark_10"/>-->
+
+                <LinearLayout
+                    android:id="@+id/featured"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="GỢI Ý"
+                        android:textSize="16sp"
+                        android:textColor="@color/titleColor"
+                        android:layout_marginLeft="10dp" />
+
+                </LinearLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/feature_recycler"
+                    android:layout_height="180dp"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:layout_below="@+id/featured"
+                    tools:listitem="@layout/goi_y_cuahang"/>
+
+                <LinearLayout
+                    android:id="@+id/menu"
+                    android:layout_below="@id/feature_recycler"
+                    android:layout_marginTop="20sp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="MENU"
+                        android:textSize="16sp"
+                        android:textColor="@color/titleColor"
+                        android:layout_marginLeft="10dp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_below="@id/menu">
+
+                    <LinearLayout
+                        android:id="@+id/menu_item1"
+                        android:layout_marginTop="10sp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="8"
+                            android:text="Đồ ăn"
+                            android:textSize="16sp"
+                            android:textColor="@color/titleColor"
+                            android:layout_marginLeft="10dp" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="10"
+                            android:textSize="18sp"
+                            android:gravity="end"
+                            android:layout_marginRight="15dp"
+                            android:textColor="@color/overlay_dark_30" />
+
+                        <ImageView
+                            android:id="@+id/arrow1"
+                            android:layout_width="0dp"
+                            android:layout_height="15dp"
+                            android:layout_weight="1"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="-15dp"
+                            android:tint="@color/overlay_dark_30"
+                            android:rotation="-90"
+                            android:src="@drawable/ic_back"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/menu_item_recycler1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recycler"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+
+                        </androidx.recyclerview.widget.RecyclerView>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/menu_item2"
+                        android:layout_marginTop="10sp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="8"
+                            android:text="Đồ uống"
+                            android:textSize="16sp"
+                            android:textColor="@color/titleColor"
+                            android:layout_marginLeft="10dp" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="10"
+                            android:textSize="18sp"
+                            android:gravity="end"
+                            android:layout_marginRight="15dp"
+                            android:textColor="@color/overlay_dark_30" />
+
+                        <ImageView
+                            android:id="@+id/arrow2"
+                            android:layout_width="0dp"
+                            android:layout_height="15dp"
+                            android:layout_weight="1"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="-15dp"
+                            android:tint="@color/overlay_dark_30"
+                            android:rotation="-90"
+                            android:src="@drawable/ic_back"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/menu_item_recycler2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recycler2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+
+                        </androidx.recyclerview.widget.RecyclerView>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/menu_item3"
+                        android:layout_marginTop="10sp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="8"
+                            android:text="Khác"
+                            android:textSize="16sp"
+                            android:textColor="@color/titleColor"
+                            android:layout_marginLeft="10dp" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="10"
+                            android:textSize="18sp"
+                            android:gravity="end"
+                            android:layout_marginRight="15dp"
+                            android:textColor="@color/overlay_dark_30" />
+
+                        <ImageView
+                            android:id="@+id/arrow3"
+                            android:layout_width="0dp"
+                            android:layout_height="15dp"
+                            android:layout_weight="1"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="-15dp"
+                            android:tint="@color/overlay_dark_30"
+                            android:rotation="-90"
+                            android:src="@drawable/ic_back"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/menu_item_recycler3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:layout_marginBottom="60dp"
+                        android:orientation="horizontal">
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recycler3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+
+                        </androidx.recyclerview.widget.RecyclerView>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</RelativeLayout>
