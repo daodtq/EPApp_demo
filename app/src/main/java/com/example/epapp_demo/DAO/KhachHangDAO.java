@@ -5,6 +5,9 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
+import com.example.epapp_demo.fragment.QlyCuaHangFragment;
+import com.example.epapp_demo.fragment.QlyKhachHangFragment;
+import com.example.epapp_demo.model.CuaHang;
 import com.example.epapp_demo.model.KhachHang;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -42,6 +45,33 @@ public class KhachHangDAO {
 //            }
 //        });
 //    }
+
+
+    public ArrayList<KhachHang> getAll() {
+        final ArrayList<KhachHang> list = new ArrayList<KhachHang>();
+        mDatabase.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    list.clear();
+                    Iterable<DataSnapshot> dataSnapshotIterable = dataSnapshot.getChildren();
+                    Iterator<DataSnapshot> iterator = dataSnapshotIterable.iterator();
+                    while (iterator.hasNext()) {
+                        DataSnapshot next = (DataSnapshot) iterator.next();
+                        KhachHang sach = next.getValue(KhachHang.class);
+                        list.add(sach);
+                        QlyKhachHangFragment.khachHangAdapter.notifyDataSetChanged();
+                    }
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+        return list;
+    }
+
 
     public ArrayList<KhachHang> getThongTin() {
         final ArrayList<KhachHang> list = new ArrayList<KhachHang>();

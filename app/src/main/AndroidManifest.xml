@@ -26,13 +26,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".Bottom_Navigation_CuaHang_Activity"></activity>
+        <activity android:name=".BottomNavigationAdmin" />
         <activity android:name=".OnlyCuaHangActivity" />
-        <activity android:name=".QlyCuaHangActivity" />
-        <activity android:name=".AdminActivity" />
         <activity android:name=".SignUpActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".BottomNavigation" />
-        <activity android:name=".MainActivity" />
         <activity android:name=".intro.IntroActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

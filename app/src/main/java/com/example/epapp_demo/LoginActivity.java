@@ -115,7 +115,7 @@ public class LoginActivity extends AppCompatActivity {
                     final String pass = edtpassword.getText().toString();
                     pb.setVisibility(View.VISIBLE);
                     if (email.equals("admin@gmail.com")&&pass.equals("admin1")){
-                        Intent i = new Intent(LoginActivity.this, AdminActivity.class);
+                        Intent i = new Intent(LoginActivity.this, BottomNavigationAdmin.class);
                         startActivity(i);
                         finish();
                     }else {

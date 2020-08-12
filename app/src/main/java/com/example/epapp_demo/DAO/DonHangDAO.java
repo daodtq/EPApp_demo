@@ -4,25 +4,17 @@ import android.content.Context;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 
-import com.example.epapp_demo.QlyCuaHangActivity;
-import com.example.epapp_demo.adapter.DonHangApdapter;
 import com.example.epapp_demo.fragment.DonHangfragment;
-import com.example.epapp_demo.model.CuaHang;
 import com.example.epapp_demo.model.DonHang;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
 public class DonHangDAO {
     DatabaseReference mDatabase;
