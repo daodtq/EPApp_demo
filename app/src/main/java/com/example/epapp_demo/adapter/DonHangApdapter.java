@@ -1,26 +1,19 @@
 package com.example.epapp_demo.adapter;
 
-import android.app.Dialog;
 import android.content.Context;
-import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.epapp_demo.BottomNavigation;
 import com.example.epapp_demo.DAO.DonHangDAO;
-import com.example.epapp_demo.LoginActivity;
-import com.example.epapp_demo.OnlyCuaHangActivity;
 import com.example.epapp_demo.R;
 import com.example.epapp_demo.model.CuaHang;
 import com.example.epapp_demo.model.DonHang;
-import com.example.epapp_demo.model.KhachHang;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;

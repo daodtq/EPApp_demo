@@ -12,13 +12,9 @@ import com.example.epapp_demo.R;
 
 public class Hoat_Dong_Cua_Hang_Fragment extends Fragment {
 
-
-
     public Hoat_Dong_Cua_Hang_Fragment() {
         // Required empty public constructor
     }
-
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

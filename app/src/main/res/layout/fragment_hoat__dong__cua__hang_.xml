@@ -1,14 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.Hoat_Dong_Cua_Hang_Fragment">
-
-    <!-- TODO: Update blank fragment layout -->
+    android:background="@android:color/white">
     <TextView
+        android:id="@+id/text"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Hoạt động của cảu hàng" />
+        android:layout_height="wrap_content"
+        android:text="Hoạt động của cửa hàng"
+        />
+    <androidx.recyclerview.widget.RecyclerView
 
-</FrameLayout>
+        android:id="@+id/recycler_hoat_dong_cua_hang"
+        android:layout_height="match_parent"
+        android:layout_margin="8dp"
+        android:layout_width="match_parent"
+        android:layout_marginBottom="10dp"
+        android:layout_below="@+id/text"/>
+
+</RelativeLayout>
