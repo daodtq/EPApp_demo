@@ -42,7 +42,6 @@ public class LoginActivity extends AppCompatActivity {
     DatabaseReference mData = FirebaseDatabase.getInstance().getReference();
     FirebaseAuth fAuth = FirebaseAuth.getInstance();;
     ProgressBar pb;
-    String UserID;
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

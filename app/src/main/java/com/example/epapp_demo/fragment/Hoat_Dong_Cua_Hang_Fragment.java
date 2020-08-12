@@ -25,8 +25,7 @@ public class Hoat_Dong_Cua_Hang_Fragment extends Fragment {
     RecyclerView rcv;
     DonHangDAO donHangDAO = new DonHangDAO(getActivity());
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
-    DatabaseReference mData = FirebaseDatabase.getInstance().getReference();
-    String userID;
+
     public static DonHangApdapter donHangApdapter;
     ArrayList<DonHang> list = new ArrayList<>();
     public Hoat_Dong_Cua_Hang_Fragment() {
@@ -40,7 +39,6 @@ public class Hoat_Dong_Cua_Hang_Fragment extends Fragment {
        View view= inflater.inflate(R.layout.fragment_hoat__dong__cua__hang_, container, false);
 
         String i = mAuth.getCurrentUser().getUid();
-        Log.d("Ma Cua Hang",i);
         rcv = view.findViewById(R.id.recycler_hoat_dong_cua_hang);
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());

@@ -54,25 +54,6 @@ public class CuaHangDAO {
         return list;
     }
 
-    // Thêm
-//    public void insert(CuaHang s) {
-//        CuaHangID = mDatabase.push().getKey();
-//        String s1 = mDatabase.child(CuaHangID).push().getKey();
-//        s.getStoreID(s1);
-//        mDatabase.child(CuaHangID).setValue(s)
-//                .addOnSuccessListener(new OnSuccessListener<Void>() {
-//                    @Override
-//                    public void onSuccess(Void aVoid) {
-//                        Log.d("insert", "insert Thanh cong");
-//                    }
-//                }).addOnFailureListener(new OnFailureListener() {
-//            @Override
-//            public void onFailure(@NonNull Exception e) {
-//                Log.d("insert", "insert That bai");
-//            }
-//        });
-//    }
-
 
     public void update(final CuaHang s) {
         mDatabase.addValueEventListener(new ValueEventListener() {

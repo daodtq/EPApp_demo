@@ -11,7 +11,7 @@
         android:id="@+id/action_two"
         android:enabled="true"
         android:icon="@drawable/star"
-        android:title=""
+        android:title="Ưa Thích"
         app:showAsAction="always" />
     <item
         android:id="@+id/action_three"

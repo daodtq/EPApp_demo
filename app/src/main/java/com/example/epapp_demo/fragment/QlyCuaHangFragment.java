@@ -78,7 +78,6 @@ public class QlyCuaHangFragment extends Fragment {
                     public void onClick(DialogInterface dialogInterface, int i) {
 
 
-
                         final String tenCH1 = tenCH.getText().toString();
                         final String mailCH1 = mailCH.getText().toString();
                         final String passCH1 = passCH.getText().toString();
@@ -92,12 +91,9 @@ public class QlyCuaHangFragment extends Fragment {
                                             Toast.makeText(getActivity(), "Đăng kí thành công",
                                                     Toast.LENGTH_SHORT).show();
                                             userID = mAuth.getCurrentUser().getUid();
-//                                        String userId = mData.push().getKey();
                                             CuaHang s = new CuaHang(userID,mailCH1,passCH1,null, tenCH1,"",5.0,"",null,null,1);
                                             mData.child("CuaHang").child(userID).push();
                                             mData.child("CuaHang").child(userID).setValue(s);
-//                                        KhachHangDAO khachHangDAO = new KhachHangDAO(SignUpActivity.this);
-//                                        khachHangDAO.insert(s);
 
 
                                         } else {

@@ -38,12 +38,11 @@ public class QlyKhachHangFragment extends Fragment {
 
      KhachHangDAO khachHangDAO = new KhachHangDAO(getActivity());
     private FirebaseAuth mAuth;
-    DatabaseReference mData = FirebaseDatabase.getInstance().getReference();
-    String userID;
+
     public static KhachHangAdapter khachHangAdapter;
     RecyclerView lv;
     ArrayList<KhachHang> list = new ArrayList<>();
-    Button add, addDH;
+
 
     public QlyKhachHangFragment() {
         // Required empty public constructor

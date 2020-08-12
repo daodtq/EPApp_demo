@@ -20,5 +20,4 @@
         android:title="Loại món"
         app:showAsAction="always" />
 
-
 </menu>

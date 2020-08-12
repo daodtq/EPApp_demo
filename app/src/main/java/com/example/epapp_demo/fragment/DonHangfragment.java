@@ -25,8 +25,7 @@ public class DonHangfragment extends Fragment {
     RecyclerView rcv;
     DonHangDAO donHangDAO = new DonHangDAO(getActivity());
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
-    DatabaseReference mData = FirebaseDatabase.getInstance().getReference();
-    String userID;
+
     public static DonHangApdapter donHangApdapter;
     ArrayList<DonHang> list = new ArrayList<>();
 

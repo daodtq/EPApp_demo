@@ -27,8 +27,6 @@ public class KhachHangAdapter extends RecyclerView.Adapter<KhachHangAdapter.View
     Context context;
     ArrayList<KhachHang> list;
     KhachHangDAO khachHangDAO;
-    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-    DatabaseReference mData = FirebaseDatabase.getInstance().getReference("KhachHang");
 
 
     public KhachHangAdapter(Context context, ArrayList<KhachHang> list) {

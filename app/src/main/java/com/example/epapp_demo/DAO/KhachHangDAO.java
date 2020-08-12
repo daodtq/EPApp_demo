@@ -28,23 +28,6 @@ public class KhachHangDAO {
         this.mDatabase = FirebaseDatabase.getInstance().getReference("KhachHang");
         this.context = context;
     }
-//    public void insert(KhachHang s) {
-//        KhachHangID = mDatabase.push().getKey();
-//        String MaSach = mDatabase.child(KhachHangID).push().getKey();
-//        s.getUserID(MaSach);
-//        mDatabase.child(KhachHangID).setValue(s)
-//                .addOnSuccessListener(new OnSuccessListener<Void>() {
-//                    @Override
-//                    public void onSuccess(Void aVoid) {
-//                        Log.d("insert", "insert Thanh cong");
-//                    }
-//                }).addOnFailureListener(new OnFailureListener() {
-//            @Override
-//            public void onFailure(@NonNull Exception e) {
-//                Log.d("insert", "insert That bai");
-//            }
-//        });
-//    }
 
 
     public ArrayList<KhachHang> getAll() {
@@ -62,32 +45,6 @@ public class KhachHangDAO {
                         list.add(sach);
                         QlyKhachHangFragment.khachHangAdapter.notifyDataSetChanged();
                     }
-                }
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-        return list;
-    }
-
-
-    public ArrayList<KhachHang> getThongTin() {
-        final ArrayList<KhachHang> list = new ArrayList<KhachHang>();
-        mDatabase.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (dataSnapshot.exists()) {
-                    list.clear();
-                    Iterable<DataSnapshot> dataSnapshotIterable = dataSnapshot.getChildren();
-                    Iterator<DataSnapshot> iterator = dataSnapshotIterable.iterator();
-                    while (iterator.hasNext()) {
-                        DataSnapshot next = (DataSnapshot) iterator.next();
-                        KhachHang cuahang = next.getValue(KhachHang.class);
-                        list.add(cuahang);
-                    }
-
                 }
             }
             @Override

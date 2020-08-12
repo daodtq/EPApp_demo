@@ -30,9 +30,7 @@ public class DonHangApdapter extends RecyclerView.Adapter<DonHangApdapter.ViewHo
     Context context;
     DonHangDAO donHangDAO;
     DatabaseReference mData = FirebaseDatabase.getInstance().getReference();
-    FirebaseAuth fAuth = FirebaseAuth.getInstance();;
 
-    SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
     public DonHangApdapter(List<DonHang> list, Context context){
         this.list = list;
         this.context = context;
@@ -71,8 +69,6 @@ public class DonHangApdapter extends RecyclerView.Adapter<DonHangApdapter.ViewHo
 
             }
         });
-
-
 
 
     }
