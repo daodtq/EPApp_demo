@@ -25,7 +25,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".OnlyCuaHangActivity"></activity>
+        <activity android:name=".Bottom_Navigation_CuaHang_Activity"></activity>
+        <activity android:name=".OnlyCuaHangActivity" />
         <activity android:name=".QlyCuaHangActivity" />
         <activity android:name=".AdminActivity" />
         <activity android:name=".SignUpActivity" />

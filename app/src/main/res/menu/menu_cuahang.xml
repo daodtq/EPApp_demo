@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/Home"
+        android:enabled="true"
+        android:icon="@drawable/ic_home1"
+        android:title="Trang Chủ"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/Hoat_Dong"
+        android:enabled="true"
+        android:icon="@drawable/ic_history"
+        android:title="Hoạt Động"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/Mon_An"
+        android:enabled="true"
+        android:icon="@drawable/ic_fastfood"
+        android:title="Món Ăn"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/Tai_Khoan"
+        android:icon="@drawable/ic_settings1"
+        android:title="Tài Khoản"
+        app:showAsAction="always"/>
+
+
+</menu>
