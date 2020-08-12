@@ -24,6 +24,7 @@ import com.example.epapp_demo.adapter.CuaHangAdapter;
 import com.example.epapp_demo.model.CuaHang;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
@@ -40,7 +41,7 @@ public class QlyCuaHangFragment extends Fragment {
     public static CuaHangAdapter cuaHangAdapte;
     RecyclerView lv;
     ArrayList<CuaHang> list = new ArrayList<>();
-    Button add;
+    FloatingActionButton add;
 
     public QlyCuaHangFragment() {
         // Required empty public constructor
