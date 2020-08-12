@@ -77,7 +77,7 @@ public class LoginActivity extends AppCompatActivity {
                                 finish();
                             }
                         } catch (Exception e) {
-                            Intent i = new Intent(LoginActivity.this, OnlyCuaHangActivity.class);
+                            Intent i = new Intent(LoginActivity.this, Bottom_Navigation_CuaHang_Activity.class);
                             startActivity(i);
                             finish();
                         }
@@ -94,7 +94,7 @@ public class LoginActivity extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         CuaHang user = dataSnapshot.getValue(CuaHang.class);
                         Log.d("abcxyz", String.valueOf(user));
-                        Intent i = new Intent(LoginActivity.this, OnlyCuaHangActivity.class);
+                        Intent i = new Intent(LoginActivity.this, Bottom_Navigation_CuaHang_Activity.class);
                         startActivity(i);
                         finish();
                     }
@@ -104,8 +104,7 @@ public class LoginActivity extends AppCompatActivity {
                     }
                 });
             }
-//            startActivity(new Intent(getApplicationContext(), BottomNavigation.class));
-//            finish();
+
         }
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
@@ -145,7 +144,7 @@ public class LoginActivity extends AppCompatActivity {
                                                                 finish();
                                                             }
                                                         } catch (Exception e) {
-                                                            Intent i = new Intent(LoginActivity.this, OnlyCuaHangActivity.class);
+                                                            Intent i = new Intent(LoginActivity.this, Bottom_Navigation_CuaHang_Activity.class);
                                                             startActivity(i);
                                                             finish();
                                                         }
@@ -164,7 +163,7 @@ public class LoginActivity extends AppCompatActivity {
                                                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                                         CuaHang user = dataSnapshot.getValue(CuaHang.class);
                                                         Log.d("abcxyz", String.valueOf(user));
-                                                        Intent i = new Intent(LoginActivity.this, OnlyCuaHangActivity.class);
+                                                        Intent i = new Intent(LoginActivity.this, Bottom_Navigation_CuaHang_Activity.class);
                                                         startActivity(i);
                                                         finish();
 
