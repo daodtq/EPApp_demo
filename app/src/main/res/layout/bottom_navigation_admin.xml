@@ -23,6 +23,8 @@
         android:layout_gravity="bottom"
         app:itemBackground="@color/white"
         android:outlineSpotShadowColor="@color/green"
-        app:menu="@menu/menu_admin" />
+        app:menu="@menu/menu_admin"
+        android:background="@color/white"
+        />
 
 </RelativeLayout>

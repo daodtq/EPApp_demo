@@ -53,7 +53,7 @@ public class DonHangfragment extends Fragment {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         rcv.setLayoutManager(layoutManager);
         mAuth = FirebaseAuth.getInstance();
-        list = donHangDAO.getDonByKhachID("MY6QSZ4hhbbXaoRIGoeWmUZYXRy1");
+        list = donHangDAO.getDonByKhachID(""+ i +"");
         donHangApdapter = new DonHangApdapter(list,getActivity());
         rcv.setAdapter(donHangApdapter);
 

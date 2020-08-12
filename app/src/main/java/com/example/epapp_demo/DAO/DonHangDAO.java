@@ -6,6 +6,7 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 
 import com.example.epapp_demo.fragment.DonHangfragment;
+import com.example.epapp_demo.fragment.Hoat_Dong_Cua_Hang_Fragment;
 import com.example.epapp_demo.model.DonHang;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -70,6 +71,29 @@ public class DonHangDAO {
 
                 }
                 DonHangfragment.donHangApdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+        return list;
+    }
+    public ArrayList<DonHang> getDonByCuaHangID(String idCuaHang) {
+        final ArrayList<DonHang> list = new ArrayList<DonHang>();
+        mDatabase.orderByChild("storeID").equalTo(idCuaHang).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                list.clear();
+                for (DataSnapshot ds : dataSnapshot.getChildren()){
+                    ds.getKey();
+                    DonHang hd = ds.getValue(DonHang.class);
+                    Log.d("ab1", hd.getStoreID());
+                    list.add(hd);
+
+                }
+                Hoat_Dong_Cua_Hang_Fragment.donHangApdapter.notifyDataSetChanged();
             }
 
             @Override

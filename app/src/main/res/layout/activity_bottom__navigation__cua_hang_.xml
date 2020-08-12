@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".BottomNavigation_CuaHang_Activity">
+    tools:context=".Bottom_Navigation_CuaHang_Activity">
 
     <RelativeLayout
         android:id="@+id/fragment_1"
@@ -14,6 +14,7 @@
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/navigation_1"
+        android:background="@color/white"
         android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
