@@ -38,26 +38,26 @@ public class DonHang implements Serializable {
         return DHTrangThai;
     }
 
-    public void setDHTrangThai(String DHTrangThai) {
-        this.DHTrangThai = DHTrangThai;
+    public void setDHTrangThai(String dHTrangThai) {
+        this.DHTrangThai = dHTrangThai;
     }
 
     public String getDHThoiGian() {
         return DHThoiGian;
     }
 
-    public void setDHThoiGian(String DHThoiGian) {
-        this.DHThoiGian = DHThoiGian;
+    public void setDHThoiGian(String dHThoiGian) {
+        this.DHThoiGian = dHThoiGian;
     }
 
     public DonHang() {
     }
 
-    public DonHang(String DHID, String userID, String storeID, String DHTrangThai, String DHThoiGian) {
+    public DonHang(String DHID, String userID, String storeID, String dHTrangThai, String dHThoiGian) {
         this.DHID = DHID;
         UserID = userID;
         StoreID = storeID;
-        this.DHTrangThai = DHTrangThai;
-        this.DHThoiGian = DHThoiGian;
+        this.DHTrangThai = dHTrangThai;
+        this.DHThoiGian = dHThoiGian;
     }
 }
