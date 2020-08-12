@@ -58,15 +58,19 @@ public class DonHangApdapter extends RecyclerView.Adapter<DonHangApdapter.ViewHo
     public void onBindViewHolder(@NonNull final DonHangApdapter.ViewHolder holder, final int position) {
 
         String i = list.get(position).getStoreID();
+        holder.ivID.setText(list.get(position).getDHID());
+        holder.ivThoiGian.setText(list.get(position).getDHThoiGian());
+        holder.ivTrangThai.setText(list.get(position).getDHTrangThai());
         mData.child("CuaHang").child(i).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                 CuaHang user = dataSnapshot.getValue(CuaHang.class);
-                holder.ivID.setText(list.get(position).getDHID());
+
                 holder.ivCuaHang.setText(user.getStoreName());
-                holder.ivThoiGian.setText(list.get(position).getDHThoiGian());
-                holder.ivTrangThai.setText(list.get(position).getDHTrangThai());
+
+                Log.d("abc1","" + list.get(position).getDHID());
+
             }
 
             @Override
@@ -74,6 +78,7 @@ public class DonHangApdapter extends RecyclerView.Adapter<DonHangApdapter.ViewHo
 
             }
         });
+
 
 
 

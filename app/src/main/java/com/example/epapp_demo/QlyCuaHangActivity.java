@@ -43,7 +43,7 @@ public class QlyCuaHangActivity extends AppCompatActivity {
     public static CuaHangAdapter cuaHangAdapte;
     ListView lv;
     ArrayList<CuaHang> list = new ArrayList<>();
-    Button add;
+    Button add, addDH;
 
 
     @Override
@@ -53,7 +53,7 @@ public class QlyCuaHangActivity extends AppCompatActivity {
 
         lv = findViewById(R.id.rcvQlyCH);
         add = findViewById(R.id.btnAddCH);
-
+        addDH = findViewById(R.id.btnAdDOnHang);
         mAuth = FirebaseAuth.getInstance();
 
         list = cuaHangDAO.getAll();
@@ -117,5 +117,13 @@ public class QlyCuaHangActivity extends AppCompatActivity {
                 builder.show();
             }
         });
+        addDH.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DatabaseReference mGioHang = FirebaseDatabase.getInstance().getReference("KhachHang/"+"MY6QSZ4hhbbXaoRIGoeWmUZYXRy1");
+                mGioHang.child("donHangID").push().setValue("abc");
+            }
+        });
+
     }
 }

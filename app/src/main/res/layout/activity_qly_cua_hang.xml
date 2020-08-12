@@ -27,5 +27,15 @@
             android:layout_marginTop="7.5dp"
             android:layout_marginRight="10dp"
             android:background="@drawable/ic_add"/>
+        <Button
+            android:id="@+id/btnAdDOnHang"
+            android:stateListAnimator="@null"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:layout_marginTop="7.5dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/ic_add"/>
     </RelativeLayout>
 </LinearLayout>
