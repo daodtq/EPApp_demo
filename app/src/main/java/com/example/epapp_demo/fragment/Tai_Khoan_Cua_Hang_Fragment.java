@@ -1,72 +1,76 @@
-package com.example.epapp_demo;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
+package com.example.epapp_demo.fragment;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
 import com.example.epapp_demo.DAO.CuaHangDAO;
-import com.example.epapp_demo.DAO.KhachHangDAO;
+import com.example.epapp_demo.LoginActivity;
+import com.example.epapp_demo.R;
 import com.example.epapp_demo.model.CuaHang;
-import com.example.epapp_demo.model.KhachHang;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.mikhaellopez.circularimageview.CircularImageView;
 import com.squareup.picasso.Picasso;
-import com.squareup.picasso.Target;
-
-import java.text.ParseException;
-import java.util.Date;
 
 import static com.firebase.ui.auth.AuthUI.getApplicationContext;
 
-public class OnlyCuaHangActivity extends AppCompatActivity {
 
+public class Tai_Khoan_Cua_Hang_Fragment extends Fragment {
     ImageView ivAvt;
     ImageView ivEditViTri, ivLogoutCH, ivEditProfileCH;
     TextView tvNameCHa, tvMailCHa,tvDiaChiCHa, tvDanhgia, kinhdo, vido;
     FirebaseAuth fAuth = FirebaseAuth.getInstance();;
     DatabaseReference mData = FirebaseDatabase.getInstance().getReference();
     String userID = fAuth.getCurrentUser().getUid();
-    CuaHangDAO cuaHangDAO = new CuaHangDAO(this);
+    CuaHangDAO cuaHangDAO = new CuaHangDAO(getActivity());
+
+    public Tai_Khoan_Cua_Hang_Fragment() {
+        // Required empty public constructor
+    }
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_only_cua_hang);
-        ivAvt = findViewById(R.id.ivCH);
-        ivEditViTri = findViewById(R.id.ivEditViTri);
-        ivLogoutCH = findViewById(R.id.ivLogoutCH);
-        tvNameCHa = findViewById(R.id.tvNameCHa);
-        tvMailCHa = findViewById(R.id.tvMailCHa);
-        tvDiaChiCHa = findViewById(R.id.tvDiaChiCHa);
-        tvDanhgia = findViewById(R.id.tvDanhgia);
-        kinhdo = findViewById(R.id.kinhdo);
-        vido = findViewById(R.id.vido);
-        ivEditProfileCH = findViewById(R.id.ivEditProfileCH);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View view=  inflater.inflate(R.layout.fragment_tai__khoan__cua__hang_, container, false);
+        return  view;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+
+        ivAvt = view.findViewById(R.id.ivCH);
+        ivEditViTri = view.findViewById(R.id.ivEditViTri);
+        ivLogoutCH = view.findViewById(R.id.ivLogoutCH);
+        tvNameCHa = view.findViewById(R.id.tvNameCHa);
+        tvMailCHa = view.findViewById(R.id.tvMailCHa);
+        tvDiaChiCHa = view.findViewById(R.id.tvDiaChiCHa);
+        tvDanhgia = view.findViewById(R.id.tvDanhgia);
+        kinhdo = view.findViewById(R.id.kinhdo);
+        vido = view.findViewById(R.id.vido);
+        ivEditProfileCH = view.findViewById(R.id.ivEditProfileCH);
 
         ivAvt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final AlertDialog.Builder builder = new AlertDialog.Builder(OnlyCuaHangActivity.this);
+                final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                 View view1 = getLayoutInflater().inflate(R.layout.edit_avata_ch,null);
                 final EditText url = view1.findViewById(R.id.url);
                 builder.setView(view1);
@@ -110,8 +114,8 @@ public class OnlyCuaHangActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                AlertDialog.Builder builder = new AlertDialog.Builder(OnlyCuaHangActivity.this);
-                LayoutInflater layoutInflater = LayoutInflater.from(OnlyCuaHangActivity.this);
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                LayoutInflater layoutInflater = LayoutInflater.from(getActivity());
                 View view1 = layoutInflater.inflate(R.layout.vitri_cuahang,null);
 
                 final EditText kinhdo = view1.findViewById(R.id.edtKinhDo);
@@ -157,8 +161,8 @@ public class OnlyCuaHangActivity extends AppCompatActivity {
         ivEditProfileCH.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(OnlyCuaHangActivity.this);
-                LayoutInflater layoutInflater = LayoutInflater.from(OnlyCuaHangActivity.this);
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                LayoutInflater layoutInflater = LayoutInflater.from(getActivity());
                 View view1 = layoutInflater.inflate(R.layout.edit_cuahang,null);
 
                 final EditText name = view1.findViewById(R.id.edtNameCHa);
@@ -172,12 +176,12 @@ public class OnlyCuaHangActivity extends AppCompatActivity {
                         mData.child("CuaHang").child(userID).addValueEventListener(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                    CuaHang user = dataSnapshot.getValue(CuaHang.class);
-                                    String name1 = name.getText().toString();
-                                    String diachi1 = diachi.getText().toString();
+                                CuaHang user = dataSnapshot.getValue(CuaHang.class);
+                                String name1 = name.getText().toString();
+                                String diachi1 = diachi.getText().toString();
 
-                                    CuaHang s = new CuaHang(userID,user.getStoreMail(),user.getStorePass(),user.getStoreMonAn(), name1,diachi1,user.getStoreDanhGia(),user.getStoreHinhAnh(),user.getStoreViDo(),user.getStoreKinhDo(),1);
-                                    cuaHangDAO.update(s);
+                                CuaHang s = new CuaHang(userID,user.getStoreMail(),user.getStorePass(),user.getStoreMonAn(), name1,diachi1,user.getStoreDanhGia(),user.getStoreHinhAnh(),user.getStoreViDo(),user.getStoreKinhDo(),1);
+                                cuaHangDAO.update(s);
                             }
 
                             @Override
@@ -206,7 +210,7 @@ public class OnlyCuaHangActivity extends AppCompatActivity {
                 CuaHang user = dataSnapshot.getValue(CuaHang.class);
 
                 try {
-                    Picasso.with(OnlyCuaHangActivity.this).load(user.getStoreHinhAnh()).into(ivAvt);
+                    Picasso.with(getActivity()).load(user.getStoreHinhAnh()).into(ivAvt);
                 } catch (Exception e) {
 
                 }
@@ -230,8 +234,8 @@ public class OnlyCuaHangActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                AlertDialog.Builder builder = new AlertDialog.Builder(OnlyCuaHangActivity.this);
-                LayoutInflater layoutInflater = LayoutInflater.from(OnlyCuaHangActivity.this);
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                LayoutInflater layoutInflater = LayoutInflater.from(getActivity());
                 View view1 = layoutInflater.inflate(R.layout.logout_alert_dialog,null);
 
 

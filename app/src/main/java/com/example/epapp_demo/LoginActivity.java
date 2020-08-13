@@ -42,7 +42,6 @@ public class LoginActivity extends AppCompatActivity {
     DatabaseReference mData = FirebaseDatabase.getInstance().getReference();
     FirebaseAuth fAuth = FirebaseAuth.getInstance();;
     ProgressBar pb;
-    String UserID;
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,7 +76,7 @@ public class LoginActivity extends AppCompatActivity {
                                 finish();
                             }
                         } catch (Exception e) {
-                            Intent i = new Intent(LoginActivity.this, OnlyCuaHangActivity.class);
+                            Intent i = new Intent(LoginActivity.this, Bottom_Navigation_CuaHang_Activity.class);
                             startActivity(i);
                             finish();
                         }
@@ -94,7 +93,7 @@ public class LoginActivity extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         CuaHang user = dataSnapshot.getValue(CuaHang.class);
                         Log.d("abcxyz", String.valueOf(user));
-                        Intent i = new Intent(LoginActivity.this, OnlyCuaHangActivity.class);
+                        Intent i = new Intent(LoginActivity.this, Bottom_Navigation_CuaHang_Activity.class);
                         startActivity(i);
                         finish();
                     }
@@ -104,8 +103,7 @@ public class LoginActivity extends AppCompatActivity {
                     }
                 });
             }
-//            startActivity(new Intent(getApplicationContext(), BottomNavigation.class));
-//            finish();
+
         }
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
@@ -116,7 +114,7 @@ public class LoginActivity extends AppCompatActivity {
                     final String pass = edtpassword.getText().toString();
                     pb.setVisibility(View.VISIBLE);
                     if (email.equals("admin@gmail.com")&&pass.equals("admin1")){
-                        Intent i = new Intent(LoginActivity.this, AdminActivity.class);
+                        Intent i = new Intent(LoginActivity.this, BottomNavigationAdmin.class);
                         startActivity(i);
                         finish();
                     }else {
@@ -145,7 +143,7 @@ public class LoginActivity extends AppCompatActivity {
                                                                 finish();
                                                             }
                                                         } catch (Exception e) {
-                                                            Intent i = new Intent(LoginActivity.this, OnlyCuaHangActivity.class);
+                                                            Intent i = new Intent(LoginActivity.this, Bottom_Navigation_CuaHang_Activity.class);
                                                             startActivity(i);
                                                             finish();
                                                         }
@@ -164,7 +162,7 @@ public class LoginActivity extends AppCompatActivity {
                                                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                                         CuaHang user = dataSnapshot.getValue(CuaHang.class);
                                                         Log.d("abcxyz", String.valueOf(user));
-                                                        Intent i = new Intent(LoginActivity.this, OnlyCuaHangActivity.class);
+                                                        Intent i = new Intent(LoginActivity.this, Bottom_Navigation_CuaHang_Activity.class);
                                                         startActivity(i);
                                                         finish();
 

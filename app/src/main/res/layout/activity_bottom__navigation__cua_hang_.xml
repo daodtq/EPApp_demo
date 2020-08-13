@@ -4,23 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".BottomNavigation">
-    <FrameLayout
-        android:id="@+id/frame_layout"
+    tools:context=".Bottom_Navigation_CuaHang_Activity">
+
+    <RelativeLayout
+        android:id="@+id/fragment_1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+        android:layout_height="wrap_content"
+        android:layout_above="@id/navigation_1"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/navigation"
+        android:id="@+id/navigation_1"
         android:background="@color/white"
-
         android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         app:itemBackground="@color/white"
         android:outlineSpotShadowColor="@color/green"
-        app:menu="@menu/menu" />
-</RelativeLayout>
+        app:menu="@menu/menu_cuahang" />
 
+</RelativeLayout>

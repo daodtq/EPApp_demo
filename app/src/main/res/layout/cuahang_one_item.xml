@@ -2,7 +2,7 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="wrap_content"
     android:background="@color/green"
-    android:layout_margin="16dp">
+    android:layout_margin="8dp">
     <LinearLayout
         android:layout_width="match_parent"
         android:orientation="vertical"
@@ -12,28 +12,77 @@
         <TextView
             android:id="@+id/tvidCH"
             android:gravity="center"
-            android:textColor="@color/green"
+            android:textColor="@color/yellow_900"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
-        <TextView
-            android:id="@+id/tvNameCH"
-            android:textColor="@color/black"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text="Tên cửa hàng:"
+                android:textColor="@color/green"/>
+            <TextView
+                android:id="@+id/tvNameCH"
+                android:layout_weight="1"
+                android:textColor="@color/black"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
         <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="Mail cửa hàng:"
+            android:textColor="@color/green"/>
+        <TextView
+            android:layout_weight="1"
             android:id="@+id/tvmailCH"
             android:textColor="@color/black"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="Mật khẩu:"
+            android:textColor="@color/green"/>
         <TextView
             android:id="@+id/tvpassCH"
             android:textColor="@color/black"
+            android:layout_weight="1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="Địa chỉ"
+            android:textColor="@color/green"/>
         <TextView
             android:id="@+id/tvDiaChiCH"
+            android:layout_weight="1"
             android:textColor="@color/black"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
+    </LinearLayout>
     </LinearLayout>
 </androidx.cardview.widget.CardView>

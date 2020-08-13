@@ -1,6 +1,7 @@
 package com.example.epapp_demo.fragment;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,42 +21,32 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.ArrayList;
 
 
-public class DonHangfragment extends Fragment {
-
+public class Hoat_Dong_Cua_Hang_Fragment extends Fragment {
     RecyclerView rcv;
     DonHangDAO donHangDAO = new DonHangDAO(getActivity());
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
 
     public static DonHangApdapter donHangApdapter;
     ArrayList<DonHang> list = new ArrayList<>();
-
-    public DonHangfragment() {
+    public Hoat_Dong_Cua_Hang_Fragment() {
         // Required empty public constructor
-    }
-
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_don_hang, container, false);
+       View view= inflater.inflate(R.layout.fragment_hoat__dong__cua__hang_, container, false);
 
         String i = mAuth.getCurrentUser().getUid();
-        rcv = view.findViewById(R.id.rcv_DonHang);
+        rcv = view.findViewById(R.id.recycler_hoat_dong_cua_hang);
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         rcv.setLayoutManager(layoutManager);
         mAuth = FirebaseAuth.getInstance();
-        list = donHangDAO.getDonByKhachID(""+ i +"");
+        list = donHangDAO.getDonByCuaHangID(""+ i +"");
         donHangApdapter = new DonHangApdapter(list,getActivity());
         rcv.setAdapter(donHangApdapter);
-
         return view;
     }
 }

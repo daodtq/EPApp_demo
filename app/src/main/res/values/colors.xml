@@ -3,7 +3,7 @@
 
 
     <color name="gray">#C0BEBE</color>
-
+    <color name="bgBottomNavigation">#fe485a</color>
     <color name="blank">#696969</color>
     <color name="home">#2196F3</color>
     <color name="activity">#673AB7</color>
@@ -36,7 +36,7 @@
     <color name="white">#ffff</color>
     <color name="Silver">#48757575</color>
     <color name="Silver1">#CB757575</color>
-    <color name="black">	#000000</color>
+    <color name="black">#000000</color>
     <color name="green">#7BED8D</color>
     <color name="titleColor">#262628</color>
 

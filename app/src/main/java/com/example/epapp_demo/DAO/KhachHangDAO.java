@@ -5,6 +5,9 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
+import com.example.epapp_demo.fragment.QlyCuaHangFragment;
+import com.example.epapp_demo.fragment.QlyKhachHangFragment;
+import com.example.epapp_demo.model.CuaHang;
 import com.example.epapp_demo.model.KhachHang;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -25,25 +28,9 @@ public class KhachHangDAO {
         this.mDatabase = FirebaseDatabase.getInstance().getReference("KhachHang");
         this.context = context;
     }
-//    public void insert(KhachHang s) {
-//        KhachHangID = mDatabase.push().getKey();
-//        String MaSach = mDatabase.child(KhachHangID).push().getKey();
-//        s.getUserID(MaSach);
-//        mDatabase.child(KhachHangID).setValue(s)
-//                .addOnSuccessListener(new OnSuccessListener<Void>() {
-//                    @Override
-//                    public void onSuccess(Void aVoid) {
-//                        Log.d("insert", "insert Thanh cong");
-//                    }
-//                }).addOnFailureListener(new OnFailureListener() {
-//            @Override
-//            public void onFailure(@NonNull Exception e) {
-//                Log.d("insert", "insert That bai");
-//            }
-//        });
-//    }
 
-    public ArrayList<KhachHang> getThongTin() {
+
+    public ArrayList<KhachHang> getAll() {
         final ArrayList<KhachHang> list = new ArrayList<KhachHang>();
         mDatabase.addValueEventListener(new ValueEventListener() {
             @Override
@@ -54,10 +41,10 @@ public class KhachHangDAO {
                     Iterator<DataSnapshot> iterator = dataSnapshotIterable.iterator();
                     while (iterator.hasNext()) {
                         DataSnapshot next = (DataSnapshot) iterator.next();
-                        KhachHang cuahang = next.getValue(KhachHang.class);
-                        list.add(cuahang);
+                        KhachHang sach = next.getValue(KhachHang.class);
+                        list.add(sach);
+                        QlyKhachHangFragment.khachHangAdapter.notifyDataSetChanged();
                     }
-
                 }
             }
             @Override

@@ -5,9 +5,8 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
-import com.example.epapp_demo.QlyCuaHangActivity;
+import com.example.epapp_demo.fragment.QlyCuaHangFragment;
 import com.example.epapp_demo.model.CuaHang;
-import com.example.epapp_demo.model.KhachHang;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
@@ -43,7 +42,7 @@ public class CuaHangDAO {
                         DataSnapshot next = (DataSnapshot) iterator.next();
                         CuaHang sach = next.getValue(CuaHang.class);
                         list.add(sach);
-                        QlyCuaHangActivity.cuaHangAdapte.notifyDataSetChanged();
+                        QlyCuaHangFragment.cuaHangAdapte.notifyDataSetChanged();
                     }
                 }
             }
@@ -54,25 +53,6 @@ public class CuaHangDAO {
         });
         return list;
     }
-
-    // Thêm
-//    public void insert(CuaHang s) {
-//        CuaHangID = mDatabase.push().getKey();
-//        String s1 = mDatabase.child(CuaHangID).push().getKey();
-//        s.getStoreID(s1);
-//        mDatabase.child(CuaHangID).setValue(s)
-//                .addOnSuccessListener(new OnSuccessListener<Void>() {
-//                    @Override
-//                    public void onSuccess(Void aVoid) {
-//                        Log.d("insert", "insert Thanh cong");
-//                    }
-//                }).addOnFailureListener(new OnFailureListener() {
-//            @Override
-//            public void onFailure(@NonNull Exception e) {
-//                Log.d("insert", "insert That bai");
-//            }
-//        });
-//    }
 
 
     public void update(final CuaHang s) {

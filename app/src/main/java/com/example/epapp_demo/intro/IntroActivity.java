@@ -15,7 +15,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.epapp_demo.LoginActivity;
-import com.example.epapp_demo.MainActivity;
 import com.example.epapp_demo.R;
 import com.google.android.material.tabs.TabLayout;
 
@@ -57,10 +56,6 @@ public class IntroActivity extends AppCompatActivity {
         }
 
         setContentView(R.layout.activity_intro);
-
-        // hide the action bar
-
-//        getSupportActionBar().hide();
 
         // ini views
         btnNext = findViewById(R.id.btn_next);

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_add_mon_an"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="end|bottom"
+        android:layout_margin="16dp"
+        android:background="@android:color/transparent"
+        android:backgroundTint="@color/green"
+        android:src="@drawable/ic_add"
+        app:rippleColor="@color/white"
+        android:layout_alignParentRight="true" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_mon_an_cua_hang"
+        android:layout_height="match_parent"
+        android:layout_margin="8dp"
+        android:layout_width="match_parent"
+        android:layout_marginBottom="10dp"
+        android:layout_below="@+id/product_title"/>
+
+</RelativeLayout>

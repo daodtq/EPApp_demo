@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/qlycuahang"
+        android:enabled="true"
+        android:icon="@drawable/ic_home1"
+        android:title="Cửa hàng"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/qlynguoidung"
+        android:enabled="true"
+        android:icon="@drawable/ic_man"
+        android:title="Khách Hàng"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/theloaimonan"
+        android:enabled="true"
+        android:icon="@drawable/ic_fastfood"
+        android:title="Loại món"
+        app:showAsAction="always" />
+
+</menu>

@@ -18,13 +18,14 @@
                android:textColor="@color/green"
                android:layout_width="match_parent"
                android:layout_height="wrap_content"
-               android:text="Mã đơn hàng:"
+               android:text="Mã khách hàng:"
                android:layout_weight="2"/>
            <TextView
-               android:id="@+id/tvmaDonHang"
+               android:id="@+id/tvIDKH"
                android:layout_width="match_parent"
                android:layout_height="wrap_content"
                android:layout_weight="1"
+               android:textColor="@color/black"
                android:text=" #15BC15S78"/>
        </LinearLayout>
         <LinearLayout
@@ -35,14 +36,14 @@
                 android:textColor="@color/green"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Tên cửa hàng:"
+                android:text="Ngày sinh:"
                 android:layout_weight="2"/>
             <TextView
-                android:id="@+id/tvTenCuaHang"
+                android:id="@+id/tvNGaySinhKH"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text=" #15BC15S78"/>
+                android:text=" #null"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -52,14 +53,14 @@
                 android:textColor="@color/green"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Ngày thực hiện:"
+                android:text="Tên khách hàng:"
                 android:layout_weight="2"/>
             <TextView
-                android:id="@+id/tvNgaythuchien"
+                android:id="@+id/tvTenKH"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text=" #15BC15S78"/>
+                android:text=" #null"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -69,16 +70,51 @@
                 android:textColor="@color/green"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Trạng thái:"
+                android:text="Email:"
                 android:layout_weight="2"/>
             <TextView
-                android:id="@+id/tvTrangthai"
-
+                android:id="@+id/tvEmailKH"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textColor="@color/yellow_900"
-                android:text=" #15BC15S78"/>
+                android:text="#null"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:textColor="@color/green"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Số điện thoại:"
+                android:layout_weight="2"/>
+            <TextView
+                android:id="@+id/tvSDTKH"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+
+                android:text=" #null"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:textColor="@color/green"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Địa chỉ:"
+                android:layout_weight="2"/>
+            <TextView
+                android:id="@+id/tvDiaChiKH"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text=" #null"/>
         </LinearLayout>
     </LinearLayout>
 </androidx.cardview.widget.CardView>

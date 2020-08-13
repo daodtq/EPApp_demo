@@ -48,10 +48,7 @@ import static com.firebase.ui.auth.AuthUI.getApplicationContext;
 
 public class SettingFragment extends Fragment {
 
-    private LinearLayout favoriteRestaurants, favoriteFoods;
     ImageView logout;
-    private static final int ACTIVITY_NUM = 4;
-    private static final String TAG = "ProfileActivity";
     CircularImageView profile_image;
     TextView tvNameProfile, tvMailProfile, tvPhoneProfile, tvNgaySinhProfile, tvDiaChiProfile;
     FirebaseAuth fAuth = FirebaseAuth.getInstance();;
@@ -64,7 +61,6 @@ public class SettingFragment extends Fragment {
     public SettingFragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -107,40 +103,6 @@ public class SettingFragment extends Fragment {
 
             }
         });
-
-//                Query query = mData.orderByChild("userMail").equalTo(user.getEmail());
-//                query.addValueEventListener(new ValueEventListener() {
-//                    @Override
-//                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                        for (DataSnapshot ds : dataSnapshot.getChildren()) {
-//                            String name = "" + ds.child("userName").getValue() + "";
-//                            String mail = "" + ds.child("userMail").getValue() + "";
-//                            String phone = "" + ds.child("userSDT").getValue() + "";
-//                            String date = "" + ds.child("userNgaySinh").getValue() + "";
-//                            String dc = "" + ds.child("userDiaChi").getValue() + "";
-//                            tvNameProfile.setText(name);
-//                            tvMailProfile.setText(mail);
-//                            tvPhoneProfile.setText(phone);
-//                            tvNgaySinhProfile.setText(date);
-//                            tvDiaChiProfile.setText(dc);
-//                            Log.d("test", name);
-//                        }
-//                    }
-//
-//                    @Override
-//                    public void onCancelled(@NonNull DatabaseError databaseError) {
-
-//                    }
-//                });
-
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//            }
-//        });
-
 
 
         edit.setOnClickListener(new View.OnClickListener() {
@@ -187,7 +149,6 @@ public class SettingFragment extends Fragment {
                                 }
                             });
 
-
                     }
                 });
                 builder.setNegativeButton("Hủy", new DialogInterface.OnClickListener() {
@@ -230,43 +191,7 @@ public class SettingFragment extends Fragment {
             }
         });
 
-        favoriteRestaurants = view.findViewById(R.id.favorite_restaurants);
-        favoriteFoods = view.findViewById(R.id.favorite_foods);
-        setupWidgets();
-
-
-        Log.d(TAG, "setupBottomNavigationView: setting up BottomNavigationView");
-        BottomNavigationView bottomNavigationViewEx = view.findViewById(R.id.navigation);
-//        BottomNavigationViewHelper.setupBottomNavigationView(bottomNavigationViewEx);
-//        BottomNavigationViewHelper.enableNavigation(getActivity(), this, bottomNavigationViewEx);
-//        Menu menu = bottomNavigationViewEx.getMenu();
-//        MenuItem menuItem = menu.getItem(ACTIVITY_NUM);
-//        menuItem.setChecked(true);
-
         return view;
     }
 
-    private void setupWidgets() {
-        favoriteRestaurants.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(getActivity(), BottomNavigation.class);
-                startActivity(i);
-            }
-        });
-        favoriteFoods.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(getActivity(), BottomNavigation.class);
-                startActivity(i);
-            }
-        });
-    }
-
-    //    BottomNavigationView setup
-
-    public void logout(View view) {
-        FirebaseAuth.getInstance().signOut();
-        startActivity(new Intent(getActivity(),LoginActivity.class));
-    }
 }
