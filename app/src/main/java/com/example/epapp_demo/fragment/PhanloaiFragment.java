@@ -16,15 +16,9 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.epapp_demo.DAO.CuaHangDAO;
-import com.example.epapp_demo.DAO.KhachHangDAO;
 import com.example.epapp_demo.DAO.PhanLoaiDAO;
 import com.example.epapp_demo.R;
-import com.example.epapp_demo.adapter.CuaHangAdapter;
-import com.example.epapp_demo.adapter.KhachHangAdapter;
 import com.example.epapp_demo.adapter.PhanLoaiAdapter;
-import com.example.epapp_demo.model.CuaHang;
-import com.example.epapp_demo.model.KhachHang;
 import com.example.epapp_demo.model.PhanLoai;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -36,11 +30,11 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
-class PhanloaiFragment extends Fragment {
+public class PhanloaiFragment extends Fragment {
 
     PhanLoaiDAO phanLoaiDAO= new PhanLoaiDAO(getActivity());
     private FirebaseAuth mAuth;
-    DatabaseReference mData = FirebaseDatabase.getInstance().getReference();
+    DatabaseReference mData = FirebaseDatabase.getInstance().getReference("PhanLoai");
     String LoaiID;
     public static PhanLoaiAdapter phanLoaiAdapter;
     RecyclerView lv;
@@ -56,11 +50,11 @@ class PhanloaiFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_phanloai, container, false);
-        lv = view.findViewById(R.id.rcvphanloai);
+        lv = view.findViewById(R.id.rcvPhanLoai);
         add = view.findViewById(R.id.btnAddPhanLoai);
         mAuth = FirebaseAuth.getInstance();
 
-        list = PhanLoaiDAO.getAll();
+        list = phanLoaiDAO.getAll();
         phanLoaiAdapter= new PhanLoaiAdapter(list,getActivity());
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         lv.setLayoutManager(layoutManager);
@@ -80,29 +74,14 @@ class PhanloaiFragment extends Fragment {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
 
+                        String PhanLoaiID = mData.push().getKey();
+                        String MaSach = mData.child(PhanLoaiID).push().getKey();
 
                         final String tenl1 = tenloai.getText().toString();
                         final String motal1 = motalaoi.getText().toString();
-                        new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if (task.isSuccessful()) {
-                                    Log.v(tenl1, motal1);
-                                    Toast.makeText(getActivity(), "thêm loại thành công",
-                                            Toast.LENGTH_SHORT).show();
-                                    LoaiID = mAuth.getCurrentUser().getUid();
-                                    PhanLoai l = new PhanLoai(LoaiID, tenl1, motal1, null,"qeqrqr", "hàn","");
-                                    mData.child("phanloai").child(LoaiID).push();
-                                    mData.child("phanloai").child(LoaiID).setValue(l);
+                        PhanLoai s = new PhanLoai(MaSach,tenl1,motal1);
+                        phanLoaiDAO.insert(s);
 
-
-                                } else {
-                                    Log.v(tenl1, motal1);
-                                    Toast.makeText(getActivity(), "Nhập đúng định dạng email, mật khẩu 6 kí tự",
-                                            Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        };
                     }
                 }).setNegativeButton("Hủy", new DialogInterface.OnClickListener() {
                     @Override

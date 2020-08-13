@@ -7,12 +7,13 @@ public class PhanLoai implements Serializable {
     private String NameLoai;
     private String mota;
 
+    public PhanLoai() {
+    }
+
     public PhanLoai(String loaiID, String nameLoai, String mota) {
         LoaiID = loaiID;
         NameLoai = nameLoai;
         this.mota = mota;
-    }
-    public PhanLoai(String loaiID, String tenl1, String motal1, Object o, String qeqrqr, String hàn, String s) {
     }
     public String getLoaiID() {
         return LoaiID;
@@ -39,6 +40,9 @@ public class PhanLoai implements Serializable {
     }
 
     public void getLaoiID(String malaoi) {
+    }
+
+    public void getLoaiID(String maSach) {
     }
 }
 

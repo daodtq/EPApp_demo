@@ -9,10 +9,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.epapp_demo.DAO.CuaHangDAO;
 import com.example.epapp_demo.DAO.PhanLoaiDAO;
 import com.example.epapp_demo.R;
-import com.example.epapp_demo.model.CuaHang;
 import com.example.epapp_demo.model.PhanLoai;
 
 import java.util.ArrayList;
@@ -59,6 +57,7 @@ public class PhanLoaiAdapter extends RecyclerView.Adapter<PhanLoaiAdapter.ViewHo
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             tvidloai = itemView.findViewById(R.id.tvLoaiid);
+            tvnameloai = itemView.findViewById(R.id.Nameloai);
             tvmota = itemView.findViewById(R.id.tvMota);
             itemView.setOnClickListener(this);
         }

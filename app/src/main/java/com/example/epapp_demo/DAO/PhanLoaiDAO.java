@@ -5,7 +5,9 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
-import com.example.epapp_demo.adapter.PhanLoaiAdapter;
+import com.example.epapp_demo.fragment.PhanloaiFragment;
+import com.example.epapp_demo.model.CuaHang;
+import com.example.epapp_demo.model.KhachHang;
 import com.example.epapp_demo.model.PhanLoai;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -19,72 +21,55 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 public class PhanLoaiDAO {
-        DatabaseReference mDatabase;
+    DatabaseReference mDatabase;
     Context context;
-            String LoaiID;
-
-        public PhanLoaiDAO(Context context) {
-        this.mDatabase = FirebaseDatabase.getInstance().getReference("phanlaoi");
+    String PhanLoaiID;
+    public PhanLoaiDAO(Context context) {
+        this.mDatabase = FirebaseDatabase.getInstance().getReference("PhanLoai");
         this.context = context;
-        }
+    }
 
-public static ArrayList<PhanLoai> getAll() {
+    public void insert(PhanLoai s) {
+        PhanLoaiID = mDatabase.push().getKey();
+        String MaSach = mDatabase.child(PhanLoaiID).push().getKey();
+        s.getLoaiID(MaSach);
+        mDatabase.child(PhanLoaiID).setValue(s)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Log.d("insert", "insert Thanh cong");
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.d("insert", "insert That bai");
+            }
+        });
+    }
 
-final ArrayList<PhanLoai> list = new ArrayList<PhanLoai>();
-mDatabase.addValueEventListener(new ValueEventListener() {
-@Override
-public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-        if (dataSnapshot.exists()) {
-        list.clear();
-        Iterable<DataSnapshot> dataSnapshotIterable = dataSnapshot.getChildren();
-        Iterator<DataSnapshot> iterator = dataSnapshotIterable.iterator();
-        while (iterator.hasNext()) {
-        DataSnapshot next = (DataSnapshot) iterator.next();
-        PhanLoai Loai = next.getValue(PhanLoai.class);
-        list.add(Loai);
-                PhanLoaiAdapter.phanlaoiadapter.notifyDataSetChanged();
-        }
-        }
-        }
-@Override
-public void onCancelled(@NonNull DatabaseError databaseError) {
 
-        }
+    public ArrayList<PhanLoai> getAll() {
+        final ArrayList<PhanLoai> list = new ArrayList<PhanLoai>();
+        mDatabase.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    list.clear();
+                    Iterable<DataSnapshot> dataSnapshotIterable = dataSnapshot.getChildren();
+                    Iterator<DataSnapshot> iterator = dataSnapshotIterable.iterator();
+                    while (iterator.hasNext()) {
+                        DataSnapshot next = (DataSnapshot) iterator.next();
+                        PhanLoai pl = next.getValue(PhanLoai.class);
+                        list.add(pl);
+                        PhanloaiFragment.phanLoaiAdapter.notifyDataSetChanged();
+                    }
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
         });
         return list;
-        }
-
-
-public void update(final PhanLoai l) {
-        dDatabase.addValueEventListener(new ValueEventListener() {
-@Override
-public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-        for (DataSnapshot data : dataSnapshot.getChildren()) {
-        if (data.child("LoaiID").getValue(String.class).equalsIgnoreCase(l.getLoaiID())) {
-        LoaiID = data.getKey();
-        Log.d("getKey", "onCreate: key :" + LoaiID);
-        dDatabase.child(LoaiID).setValue(l)
-        .addOnSuccessListener(new OnSuccessListener<Void>() {
-@Override
-public void onSuccess(Void aVoid) {
-        Log.d("update", "update Thanh cong");
-        }
-        })
-        .addOnFailureListener(new OnFailureListener() {
-@Override
-public void onFailure(@NonNull Exception e) {
-        Log.d("update", "update That bai");
-        }
-        });
-        }
-        }
-        }
-
-@Override
-public void onCancelled(@NonNull DatabaseError databaseError) {
-
-        }
-        });
-        }
-
-        }
+    }
+}
