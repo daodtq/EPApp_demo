@@ -1,6 +1,7 @@
 package com.example.epapp_demo.DAO;
 
 import android.content.Context;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 
@@ -8,6 +9,9 @@ import com.example.epapp_demo.fragment.Mon_An_Cua_Hang_Fragment;
 import com.example.epapp_demo.fragment.QlyCuaHangFragment;
 import com.example.epapp_demo.model.CuaHang;
 import com.example.epapp_demo.model.MonAn;
+import com.example.epapp_demo.model.PhanLoai;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -51,5 +55,25 @@ public class MonAnDAO {
             }
         });
         return list;
+    }
+
+    public void insert(MonAn s) {
+        monAnID = mDatabase.push().getKey();
+        String MaSach = mDatabase.child(monAnID).push().getKey();
+        s.setMonAnID(MaSach);
+        mDatabase.child(monAnID).setValue(s)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+
+                        Log.d("insert", "insert Thanh cong");
+
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.d("insert", "insert That bai");
+            }
+        });
     }
 }

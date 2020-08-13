@@ -44,5 +44,10 @@ public class PhanLoai implements Serializable {
 
     public void getLoaiID(String maSach) {
     }
+
+    @Override
+    public String toString() {
+        return NameLoai;
+    }
 }
 

@@ -48,8 +48,8 @@ public class MonAnAdapter extends RecyclerView.Adapter<MonAnAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
 //        String i = list.get(position).getStoreID();
-        holder.ten_Ma.setText(list.get(position).getMonAnID());
-        holder.gia_MA.setText(String.valueOf(list.get(position).getGiaMonAn()));
+        holder.ten_Ma.setText(list.get(position).getNameMonAn());
+        holder.gia_MA.setText(String.valueOf(list.get(position).getGiaMonAn())+" VNĐ");
         holder.moTa_MA.setText(list.get(position).getMoTa());
 
     }

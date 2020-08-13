@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 
@@ -22,6 +23,7 @@ import com.example.epapp_demo.DAO.PhanLoaiDAO;
 import com.example.epapp_demo.R;
 import com.example.epapp_demo.adapter.DonHangApdapter;
 import com.example.epapp_demo.adapter.MonAnAdapter;
+import com.example.epapp_demo.adapter.PhanLoaiAdapter;
 import com.example.epapp_demo.adapter.SpinnerPLAdapter;
 import com.example.epapp_demo.model.DonHang;
 import com.example.epapp_demo.model.MonAn;
@@ -65,6 +67,8 @@ public class Mon_An_Cua_Hang_Fragment extends Fragment {
         list = monAnDAO.getAll();
         monAnAdapter = new MonAnAdapter(list,getActivity());
         rcv.setAdapter(monAnAdapter);
+        final ArrayList<PhanLoai> listPL = new PhanLoaiDAO(getActivity()).getAllspn();
+//        final SpinnerPLAdapter spnPL = new SpinnerPLAdapter(getActivity(),listPL);
 
 
         add.setOnClickListener(new View.OnClickListener() {
@@ -77,15 +81,27 @@ public class Mon_An_Cua_Hang_Fragment extends Fragment {
                 final EditText mota = view1.findViewById(R.id.edtMotaMon);
                 final EditText gia = view1.findViewById(R.id.edtGiaMon);
                 final EditText url = view1.findViewById(R.id.edtUrlMon);
-                List<PhanLoai> listPL = new PhanLoaiDAO(getActivity()).getAll();
-                SpinnerPLAdapter spnPL = new SpinnerPLAdapter(getActivity(),listPL);
-                spn.setAdapter(spnPL);
+
+                //Test
+
+                ArrayAdapter adapter = new ArrayAdapter (getActivity(), android.R.layout.simple_spinner_item, listPL);
+                spn.setAdapter(adapter);
+
                 builder.setView(view1);
                 builder.setPositiveButton("Thêm", new DialogInterface.OnClickListener() {
                     @SuppressLint("RestrictedApi")
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
+                        String tenmon1 = tenmon.getText().toString();
+                        String mota1 = mota.getText().toString();
+                        int gia1 = Integer.parseInt(gia.getText().toString());
+                        String url1 = url.getText().toString();
+                        PhanLoai loai = (PhanLoai) spn.getSelectedItem();
+                        String matheloai = loai.getLoaiID();
 
+                        String a = mAuth.getCurrentUser().getUid();
+                        MonAn s = new MonAn(null,tenmon1,gia1,url1,a,matheloai,mota1);
+                        monAnDAO.insert(s);
                     }
                 }).setNegativeButton("Hủy", new DialogInterface.OnClickListener() {
                     @Override
