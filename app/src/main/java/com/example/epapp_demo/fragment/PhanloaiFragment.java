@@ -66,7 +66,7 @@ public class PhanloaiFragment extends Fragment {
             public void onClick(View view) {
                 final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                 View view1 = getLayoutInflater().inflate(R.layout.add_loai,null);
-                final EditText tenloai = view1.findViewById(R.id.edtNameloai);
+                final EditText tenloai = view1.findViewById(R.id.edttenlaoi);
                 final EditText motalaoi = view1.findViewById(R.id.edtMota);
                 builder.setView(view1);
                 builder.setPositiveButton("Thêm", new DialogInterface.OnClickListener() {
@@ -77,8 +77,8 @@ public class PhanloaiFragment extends Fragment {
                         String PhanLoaiID = mData.push().getKey();
                         String MaSach = mData.child(PhanLoaiID).push().getKey();
 
-                        final String tenl1 = tenloai.getText().toString();
-                        final String motal1 = motalaoi.getText().toString();
+                        String tenl1 = tenloai.getText().toString();
+                        String motal1 = motalaoi.getText().toString();
                         PhanLoai s = new PhanLoai(MaSach,tenl1,motal1);
                         phanLoaiDAO.insert(s);
 

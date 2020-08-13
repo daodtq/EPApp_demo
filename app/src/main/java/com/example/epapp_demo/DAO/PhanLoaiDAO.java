@@ -37,7 +37,9 @@ public class PhanLoaiDAO {
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
+
                         Log.d("insert", "insert Thanh cong");
+
                     }
                 }).addOnFailureListener(new OnFailureListener() {
             @Override
