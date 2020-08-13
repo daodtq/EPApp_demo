@@ -68,6 +68,8 @@ public class PhanloaiFragment extends Fragment {
                 View view1 = getLayoutInflater().inflate(R.layout.add_loai,null);
                 final EditText tenloai = view1.findViewById(R.id.edttenlaoi);
                 final EditText motalaoi = view1.findViewById(R.id.edtMota);
+                final EditText anh = view1.findViewById(R.id.edtUrlAnh);
+
                 builder.setView(view1);
                 builder.setPositiveButton("Thêm", new DialogInterface.OnClickListener() {
                     @SuppressLint("RestrictedApi")
@@ -76,10 +78,10 @@ public class PhanloaiFragment extends Fragment {
 
                         String PhanLoaiID = mData.push().getKey();
                         String MaSach = mData.child(PhanLoaiID).push().getKey();
-
+                        String anh1 = anh.getText().toString();
                         String tenl1 = tenloai.getText().toString();
                         String motal1 = motalaoi.getText().toString();
-                        PhanLoai s = new PhanLoai(MaSach,tenl1,motal1);
+                        PhanLoai s = new PhanLoai(MaSach,tenl1,motal1,anh1);
                         phanLoaiDAO.insert(s);
 
                     }

@@ -83,6 +83,7 @@ public class PhanLoaiAdapter extends RecyclerView.Adapter<PhanLoaiAdapter.ViewHo
             View view1 = layoutInflater.inflate(R.layout.edit_phanloai,null);
             final TextView ten = view1.findViewById(R.id.edtEditLoai);
             final TextView mota = view1.findViewById(R.id.edtEditMota);
+            final TextView anh = view1.findViewById(R.id.edtEditUrl);
             ten.setText(gd.getNameLoai());
             mota.setText(gd.getMota());
 
@@ -95,7 +96,8 @@ public class PhanLoaiAdapter extends RecyclerView.Adapter<PhanLoaiAdapter.ViewHo
                 public void onClick(DialogInterface dialogInterface, int i) {
                     final String ten1 = ten.getText().toString();
                     final String mota1 = mota.getText().toString();
-                    PhanLoai s = new PhanLoai(gd.getLoaiID(),ten1,mota1);
+                    final String anh1 = anh.getText().toString();
+                    PhanLoai s = new PhanLoai(gd.getLoaiID(),ten1,mota1,anh1);
                     phanLoaiDAO.update(s);
                 }
             });
@@ -124,7 +126,7 @@ public class PhanLoaiAdapter extends RecyclerView.Adapter<PhanLoaiAdapter.ViewHo
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
 
-                    PhanLoai s = new PhanLoai(gd.getLoaiID(),gd.getNameLoai(),gd.getMota());
+                    PhanLoai s = new PhanLoai(gd.getLoaiID(),gd.getNameLoai(),gd.getMota(),gd.getHinhanh());
                     phanLoaiDAO.delete(s);
                 }
             });
