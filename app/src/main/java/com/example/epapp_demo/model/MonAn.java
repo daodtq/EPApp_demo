@@ -27,7 +27,9 @@ public class MonAn implements Serializable {
                 '}';
     }
 
-    public String getMonAnID(String maSach) {
+
+
+    public String getMonAnID() {
         return MonAnID;
     }
 
