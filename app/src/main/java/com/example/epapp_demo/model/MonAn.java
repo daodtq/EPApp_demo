@@ -2,7 +2,7 @@ package com.example.epapp_demo.model;
 
 import java.io.Serializable;
 
-class MonAn implements Serializable {
+public class MonAn implements Serializable {
     private String MonAnID;
     private String NameMonAn;
     private int GiaMonAn;
