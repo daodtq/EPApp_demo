@@ -94,4 +94,8 @@ public class MonAn implements Serializable {
         PhanLoaiID = phanLoaiID;
         MoTa = moTa;
     }
+
+    public String getMonAnID(String maSach) {
+        return MonAnID;
+    }
 }

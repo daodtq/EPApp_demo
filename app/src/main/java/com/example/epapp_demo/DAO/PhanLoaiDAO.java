@@ -34,8 +34,8 @@ public class PhanLoaiDAO {
 
     public void insert(PhanLoai s) {
         PhanLoaiID = mDatabase.push().getKey();
-        String MaSach = mDatabase.child(PhanLoaiID).push().getKey();
-        s.getLoaiID(MaSach);
+        String MaSach = mDatabase.child(PhanLoaiID).getKey();
+        s.setLoaiID(MaSach);
         mDatabase.child(PhanLoaiID).setValue(s)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override

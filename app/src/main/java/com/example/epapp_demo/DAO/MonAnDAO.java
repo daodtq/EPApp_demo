@@ -87,7 +87,7 @@ public class MonAnDAO {
     }
     public void insert(MonAn s) {
         monAnID = mDatabase.push().getKey();
-        String MaSach = mDatabase.child(monAnID).push().getKey();
+        String MaSach = mDatabase.child(monAnID).getKey();
         s.setMonAnID(MaSach);
         mDatabase.child(monAnID).setValue(s)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
