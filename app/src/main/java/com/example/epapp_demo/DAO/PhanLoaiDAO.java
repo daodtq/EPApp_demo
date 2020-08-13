@@ -99,4 +99,68 @@ public class PhanLoaiDAO {
         });
         return list;
     }
+
+    public void delete(final PhanLoai s) {
+        mDatabase.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for(DataSnapshot data : dataSnapshot.getChildren()) {
+                    if (data.child("loaiID").getValue(String.class).equalsIgnoreCase(s.getLoaiID())){
+                        PhanLoaiID = data.getKey();
+                        Log.d("getKey", "onCreate: key :" + PhanLoaiID);
+                        mDatabase.child(PhanLoaiID).removeValue()
+                                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void aVoid) {
+                                        PhanloaiFragment.phanLoaiAdapter.notifyDataSetChanged();
+                                        Log.d("delete","delete Thanh cong");
+                                    }
+                                })
+                                .addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        Log.d("delete","delete That bai");
+                                    }
+                                });
+                    }
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+    public void update(final PhanLoai s) {
+        mDatabase.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot data : dataSnapshot.getChildren()) {
+                    if (data.child("loaiID").getValue(String.class).equalsIgnoreCase(s.getLoaiID())) {
+                        PhanLoaiID = data.getKey();
+                        Log.d("getKey", "onCreate: key :" + PhanLoaiID);
+                        PhanloaiFragment.phanLoaiAdapter.notifyDataSetChanged();
+                        mDatabase.child(PhanLoaiID).setValue(s)
+                                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void aVoid) {
+                                        Log.d("update", "update Thanh cong");
+                                    }
+                                })
+                                .addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        Log.d("update", "update That bai");
+                                    }
+                                });
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
 }
