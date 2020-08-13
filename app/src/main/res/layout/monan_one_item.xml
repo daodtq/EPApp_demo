@@ -18,7 +18,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/item_name"
+                android:id="@+id/item_ten_MA"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:singleLine="true"
@@ -27,14 +27,14 @@
                 android:textColor="@color/titleColor" />
 
             <TextView
-                android:id="@+id/item_description"
+                android:id="@+id/item_moTa_MA"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Món thích thì ăn, không thích cũng phải ăn!"
                 android:textColor="@color/subtitle" />
 
             <TextView
-                android:id="@+id/item_price"
+                android:id="@+id/item_gia_MA"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="$15,00"
@@ -58,6 +58,7 @@
                 app:cardElevation="2dp">
 
                 <ImageView
+                    android:id="@+id/anh_MA"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scaleType="centerCrop"

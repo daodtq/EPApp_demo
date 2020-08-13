@@ -13,14 +13,23 @@ import android.widget.Spinner;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.epapp_demo.DAO.DonHangDAO;
+import com.example.epapp_demo.DAO.MonAnDAO;
 import com.example.epapp_demo.DAO.PhanLoaiDAO;
 import com.example.epapp_demo.R;
+import com.example.epapp_demo.adapter.DonHangApdapter;
+import com.example.epapp_demo.adapter.MonAnAdapter;
 import com.example.epapp_demo.adapter.SpinnerPLAdapter;
+import com.example.epapp_demo.model.DonHang;
+import com.example.epapp_demo.model.MonAn;
 import com.example.epapp_demo.model.PhanLoai;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -28,6 +37,12 @@ public class Mon_An_Cua_Hang_Fragment extends Fragment {
 
     RecyclerView rcv;
     FloatingActionButton add;
+
+    MonAnDAO monAnDAO = new MonAnDAO(getActivity());
+    private FirebaseAuth mAuth = FirebaseAuth.getInstance();
+
+    public static MonAnAdapter monAnAdapter;
+    ArrayList<MonAn> list = new ArrayList<>();
 
     public Mon_An_Cua_Hang_Fragment() {
         // Required empty public constructor
@@ -40,6 +55,18 @@ public class Mon_An_Cua_Hang_Fragment extends Fragment {
         View view= inflater.inflate(R.layout.fragment_mon__an__cua__hang_, container, false);
         rcv = view.findViewById(R.id.recycler_mon_an_cua_hang);
         add = view.findViewById(R.id.btn_add_mon_an);
+
+
+        String i = mAuth.getCurrentUser().getUid();
+
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
+        rcv.setLayoutManager(layoutManager);
+        mAuth = FirebaseAuth.getInstance();
+        list = monAnDAO.getAll();
+        monAnAdapter = new MonAnAdapter(list,getActivity());
+        rcv.setAdapter(monAnAdapter);
+
+
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
