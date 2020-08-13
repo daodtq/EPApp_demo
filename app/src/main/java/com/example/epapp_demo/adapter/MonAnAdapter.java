@@ -20,6 +20,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -48,6 +49,12 @@ public class MonAnAdapter extends RecyclerView.Adapter<MonAnAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
 //        String i = list.get(position).getStoreID();
+
+        //  Thêm ảnh
+
+        Picasso.with(context).load(list.get(position).getHinhAnhMonAn()).into(holder.anh_MA);
+
+
         holder.ten_Ma.setText(list.get(position).getNameMonAn());
         holder.gia_MA.setText(String.valueOf(list.get(position).getGiaMonAn())+" VNĐ");
         holder.moTa_MA.setText(list.get(position).getMoTa());
