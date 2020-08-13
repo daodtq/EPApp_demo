@@ -59,8 +59,6 @@ public class Mon_An_Cua_Hang_Fragment extends Fragment {
         add = view.findViewById(R.id.btn_add_mon_an);
 
 
-        String i = mAuth.getCurrentUser().getUid();
-
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         rcv.setLayoutManager(layoutManager);
         mAuth = FirebaseAuth.getInstance();
@@ -68,8 +66,6 @@ public class Mon_An_Cua_Hang_Fragment extends Fragment {
         monAnAdapter = new MonAnAdapter(list,getActivity());
         rcv.setAdapter(monAnAdapter);
         final ArrayList<PhanLoai> listPL = new PhanLoaiDAO(getActivity()).getAllspn();
-//        final SpinnerPLAdapter spnPL = new SpinnerPLAdapter(getActivity(),listPL);
-
 
         add.setOnClickListener(new View.OnClickListener() {
             @Override

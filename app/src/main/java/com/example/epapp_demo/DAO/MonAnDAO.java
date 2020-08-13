@@ -56,6 +56,21 @@ public class MonAnDAO {
         });
         return list;
     }
+    public  void delete( String id){
+        mDatabase.child(id).removeValue()
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                Log.d("delete", "delete Thanh cong");
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.d("delete", "delete That bai");
+            }
+        });
+
+    }
 
     public void insert(MonAn s) {
         monAnID = mDatabase.push().getKey();
@@ -65,14 +80,26 @@ public class MonAnDAO {
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-
                         Log.d("insert", "insert Thanh cong");
-
                     }
                 }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
                 Log.d("insert", "insert That bai");
+            }
+        });
+    }
+    public void update(final MonAn s, String id) {
+        mDatabase.child(id).setValue(s)
+        .addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                Log.d("update", "update Thanh cong");
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.d("update", "update That bai");
             }
         });
     }
