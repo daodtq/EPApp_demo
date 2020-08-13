@@ -13,21 +13,30 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.epapp_demo.DAO.MonAnDAO;
+import com.example.epapp_demo.DAO.PhanLoaiDAO;
 import com.example.epapp_demo.R;
 import com.example.epapp_demo.adapter.CategoriesAdapter;
+import com.example.epapp_demo.adapter.PhanLoaiAdapter;
 import com.example.epapp_demo.adapter.PlaceAdapter;
 import com.example.epapp_demo.adapter.SliderAdapter;
+import com.example.epapp_demo.model.CuaHang;
+import com.example.epapp_demo.model.PhanLoai;
 import com.example.epapp_demo.model.Place;
 import com.smarteist.autoimageslider.IndicatorAnimations;
 import com.smarteist.autoimageslider.SliderAnimations;
 import com.smarteist.autoimageslider.SliderView;
+
+import java.util.ArrayList;
 
 
 public class HomeFragment extends Fragment {
     SliderView sliderView;
     RecyclerView rcvCategories, rcvQuanGoiY;
     PlaceAdapter placeAdapter;
-    CategoriesAdapter categoriesAdapter;
+    public static CategoriesAdapter categoriesAdapter;
+    ArrayList<PhanLoai> list = new ArrayList<>();
+    PhanLoaiDAO phanLoaiDAO = new PhanLoaiDAO(getActivity());
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -46,65 +55,19 @@ public class HomeFragment extends Fragment {
         sliderView = view.findViewById(R.id.imgSlider);
         rcvCategories = (RecyclerView)view.findViewById(R.id.trending_recycler_view);
         rcvQuanGoiY = view.findViewById(R.id.place_recycler_view);
+
+
         LinearLayoutManager llmTrending = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
         rcvCategories.setLayoutManager(llmTrending);
-        categoriesAdapter = new CategoriesAdapter(getActivity());
+        list = phanLoaiDAO.getAllMenu();
+        categoriesAdapter = new CategoriesAdapter(list,getActivity());
         rcvCategories.setAdapter(categoriesAdapter);
+
+
         LinearLayoutManager place = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         rcvQuanGoiY.setLayoutManager(place);
         placeAdapter = new PlaceAdapter(getActivity());
         rcvQuanGoiY.setAdapter(placeAdapter);
-        categoriesAdapter.setOnItemClickListener(new CategoriesAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(int position) {
-                if (position == 0) {
-                    Fragment newFragment = new ComPhanFragment();
-                    // consider using Java coding conventions (upper first char class names!!!)
-                    FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                    // Replace whatever is in the fragment_container view with this fragment,
-                    // and add the transaction to the back stack
-                    transaction.replace(R.id.frame_layout, newFragment);
-                    transaction.addToBackStack(null);
-                    // Commit the transaction
-                    transaction.commit();
-                }
-                if (position == 1) {
-                    Fragment newFragment = new TraSuaFragment();
-                    FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                    transaction.replace(R.id.frame_layout, newFragment);
-                    transaction.addToBackStack(null);
-                    transaction.commit();
-                }
-                if (position == 2) {
-                    Fragment newFragment = new GaRanFragment();
-                    FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                    transaction.replace(R.id.frame_layout, newFragment);
-                    transaction.addToBackStack(null);
-                    transaction.commit();
-                }
-                if (position == 3) {
-                    Fragment newFragment = new Bun_PhoFragment();
-                    FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                    transaction.replace(R.id.frame_layout, newFragment);
-                    transaction.addToBackStack(null);
-                    transaction.commit();
-                }
-                if (position == 4) {
-                    Fragment newFragment = new AnVatFragment();
-                    FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                    transaction.replace(R.id.frame_layout, newFragment);
-                    transaction.addToBackStack(null);
-                    transaction.commit();
-                }
-                if (position == 5) {
-                    Fragment newFragment = new MonHanFragment();
-                    FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                    transaction.replace(R.id.frame_layout, newFragment);
-                    transaction.addToBackStack(null);
-                    transaction.commit();
-                }
-            }
-        });
         placeAdapter.setOnPlaceItemClickListener(new PlaceAdapter.OnPlaceClickListener() {
             @Override
             public void onPlaceItemClick(int position) {

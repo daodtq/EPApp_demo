@@ -142,7 +142,6 @@ public class SettingFragment extends Fragment {
                                     e.printStackTrace();
                                 }
                                 }
-
                                 @Override
                                 public void onCancelled(@NonNull DatabaseError databaseError) {
 
