@@ -120,7 +120,6 @@ public class MonAnAdapter extends RecyclerView.Adapter<MonAnAdapter.ViewHolder> 
                 final EditText url = view1.findViewById(R.id.edtUrlMon);
 
                 MonAn ma = list.get(position);
-
                 tenmon.setText(ma.getNameMonAn());
                 mota.setText(ma.getMoTa());
                 gia.setText(String.valueOf(ma.getGiaMonAn()));
@@ -132,7 +131,7 @@ public class MonAnAdapter extends RecyclerView.Adapter<MonAnAdapter.ViewHolder> 
 
                 int idxLS = -1;
                 for (int i = 0; i < listPL.size(); i++){
-                    if(listPL.get(i).toString().equalsIgnoreCase(ma.getPhanLoaiID())){
+                    if(listPL.get(i).getLoaiID().toString().equalsIgnoreCase(ma.getPhanLoaiID())){
                         idxLS = i;
                         break;
                     }
