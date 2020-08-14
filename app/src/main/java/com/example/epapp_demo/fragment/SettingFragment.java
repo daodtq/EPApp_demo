@@ -5,62 +5,49 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
-import com.example.epapp_demo.BottomNavigation;
-import com.example.epapp_demo.DAO.KhachHangDAO;
 import com.example.epapp_demo.LoginActivity;
 import com.example.epapp_demo.R;
 import com.example.epapp_demo.model.KhachHang;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.errorprone.annotations.Var;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.EventListener;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.mikhaellopez.circularimageview.CircularImageView;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.ArrayList;
 
 import static com.firebase.ui.auth.AuthUI.getApplicationContext;
 
 public class SettingFragment extends Fragment {
-
+    TextView  txtDoiThongTin, txtChangePassWord;
     ImageView logout;
-    CircularImageView profile_image;
-    TextView tvNameProfile, tvMailProfile, tvPhoneProfile, tvNgaySinhProfile, tvDiaChiProfile;
-    FirebaseAuth fAuth = FirebaseAuth.getInstance();;
-    String userID= fAuth.getCurrentUser().getUid();
-    ImageView edit;
-
     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-    DatabaseReference mData = FirebaseDatabase.getInstance().getReference();
-
+    FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+    DatabaseReference databaseReference1 = firebaseDatabase.getReference("KhachHang");
+    CircularImageView profile_image;
+    TextView tvNameProfile, tvMailProfile, tvPhoneProfile, tvAddressProfile,tvNgaySinh;
+    FirebaseAuth fAuth = FirebaseAuth.getInstance();
+    public static String userID;
+    public static String email;
+    public static String pass;
     public SettingFragment() {
         // Required empty public constructor
     }
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -72,30 +59,28 @@ public class SettingFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_profile, container, false);
-
+        View view = inflater.inflate(R.layout.profile_fragment, container, false);
         tvNameProfile = view.findViewById(R.id.tvNameProfile);
         tvMailProfile = view.findViewById(R.id.tvMailProfile);
         tvPhoneProfile = view.findViewById(R.id.tvPhoneProfile);
+        tvAddressProfile = view.findViewById(R.id.tvDiaChiProfile);
+        tvNgaySinh = view.findViewById(R.id.tvNgaySinhProfile);
+        txtDoiThongTin = view.findViewById(R.id.txtDoiThongTin);
+        txtChangePassWord = view.findViewById(R.id.txtDoiMatKhau);
         profile_image = view.findViewById(R.id.profile_image);
-        tvNgaySinhProfile = view.findViewById(R.id.tvNgaySinhProfile);
-        tvDiaChiProfile = view.findViewById(R.id.tvDiaChiProfile);
-
-        edit = view.findViewById(R.id.ivEditProfile);
-
-        final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-
-        mData.child("KhachHang").child(userID).addValueEventListener(new ValueEventListener() {
+        userID = fAuth.getCurrentUser().getUid();
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+            email = user.getEmail();
+            tvMailProfile.setText(email);
+        databaseReference1.child(userID).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                KhachHang user = dataSnapshot.getValue(KhachHang.class);
-
-                tvNameProfile.setText(user.getUserName());
-                tvMailProfile.setText(user.getUserMail());
-                tvPhoneProfile.setText(user.getUserSDT());
-                tvNgaySinhProfile.setText(user.getUserNgaySinh());
-                tvDiaChiProfile.setText(user.getUserDiaChi());
-
+                KhachHang nguoiDung = dataSnapshot.getValue(KhachHang.class);
+                tvNameProfile.setText(nguoiDung.getUserName());
+                tvPhoneProfile.setText(nguoiDung.getUserSDT());
+                tvAddressProfile.setText(nguoiDung.getUserDiaChi());
+                tvNgaySinh.setText(nguoiDung.getUserNgaySinh());
+                pass = nguoiDung.getUserPass();
             }
 
             @Override
@@ -103,66 +88,7 @@ public class SettingFragment extends Fragment {
 
             }
         });
-
-
-        edit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                LayoutInflater layoutInflater = LayoutInflater.from(getActivity());
-                View view1 = layoutInflater.inflate(R.layout.edit_profile,null);
-
-                final EditText name = view1.findViewById(R.id.edtNameKH);
-                final EditText ngaysinh = view1.findViewById(R.id.edtNgaySinhKH);
-                final EditText sdt = view1.findViewById(R.id.edtSDTKH);
-                final EditText diachi = view1.findViewById(R.id.edtDiaChiKH);
-
-                builder.setPositiveButton("Sửa", new DialogInterface.OnClickListener() {
-                    @SuppressLint("RestrictedApi")
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-
-                            mData.child("KhachHang").child(userID).addValueEventListener(new ValueEventListener() {
-                                @Override
-                                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                    try {
-                                    KhachHang user = dataSnapshot.getValue(KhachHang.class);
-                                    String pass11 = user.getUserPass();
-                                    String id11 = user.getUserID();
-                                    String mail11 = user.getUserMail();
-                                    String name1 = name.getText().toString();
-                                    Date ngaysinh1 = sdf.parse(ngaysinh.getText().toString());
-                                    String sdt1 = sdt.getText().toString();
-                                    String diachi1 = diachi.getText().toString();
-
-                                    KhachHang s = new KhachHang(id11,name1,diachi1,pass11,sdt1,mail11, sdf.format(ngaysinh1),0)   ;
-                                    KhachHangDAO khachHangDAO = new KhachHangDAO(getActivity());
-                                    khachHangDAO.update(s);
-                                } catch (ParseException e) {
-                                    e.printStackTrace();
-                                }
-                                }
-
-                                @Override
-                                public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                                }
-                            });
-
-                    }
-                });
-                builder.setNegativeButton("Hủy", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-                    }
-                });
-                builder.setView(view1);
-                builder.show();
-            }
-        });
         logout = view.findViewById(R.id.ivLogout);
-
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -170,8 +96,6 @@ public class SettingFragment extends Fragment {
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                 LayoutInflater layoutInflater = LayoutInflater.from(getActivity());
                 View view1 = layoutInflater.inflate(R.layout.logout_alert_dialog,null);
-
-
                 builder.setPositiveButton("Có", new DialogInterface.OnClickListener() {
                     @SuppressLint("RestrictedApi")
                     @Override
@@ -191,7 +115,30 @@ public class SettingFragment extends Fragment {
             }
         });
 
+        txtDoiThongTin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment newFragment = new DoiThongTinFragment();
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.frame_layout, newFragment);
+                transaction.addToBackStack(null);
+                transaction.commit();
+            }
+        });
+        txtChangePassWord.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment newFragment = new ChangePassFragment();
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.frame_layout, newFragment);
+                transaction.addToBackStack(null);
+                transaction.commit();
+            }
+        });
         return view;
     }
-
+    public void logout(View view) {
+        FirebaseAuth.getInstance().signOut();
+        startActivity(new Intent(getActivity(),LoginActivity.class));
+    }
 }

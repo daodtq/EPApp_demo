@@ -1,0 +1,97 @@
+package com.example.epapp_demo.adapter;
+
+import android.content.Context;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.epapp_demo.DAO.CuaHangDAO;
+import com.example.epapp_demo.R;
+import com.example.epapp_demo.model.CuaHang;
+import com.example.epapp_demo.model.Place;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class ShowCuaHangAdapter extends RecyclerView.Adapter<ShowCuaHangAdapter.ViewHolder> {
+
+    Context context;
+    private List<CuaHang> cuaHangs = new ArrayList<>();
+    ArrayList<CuaHang> cuahang;
+    CuaHangDAO cuaHangDAO;
+    private ShowCuaHangAdapter.OnStoreClickListener mListener;
+    public void setOnStoreItemClickListener (ShowCuaHangAdapter.OnStoreClickListener onStoreItemClickListener){
+        mListener = onStoreItemClickListener;
+    }
+    public ShowCuaHangAdapter(ArrayList<CuaHang> cuahang, Context context){
+        this.cuahang = cuahang;
+        this.context = context;
+        cuaHangDAO = new CuaHangDAO(context);
+    }
+//    public void setFavorite(int placeId) {
+//        if(cuaHangs.size() > 0) {
+//            for (int i = 0; i < cuaHangs.size(); i++) {
+//                if(cuaHangs.get(i).getStoreID().equals(placeId)) {
+//                    if (!cuaHangs.get(i).isFavorite()) {
+//                        cuaHangs.get(i).setFavorite(true);
+//                        break;
+//                    } else {
+//                        cuaHangs.get(i).setFavorite(false);
+//                        break;
+//                    }
+//                }
+//            }
+//        }
+//    }
+
+    @NonNull
+    @Override
+    public ShowCuaHangAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view= LayoutInflater.from(context).inflate(R.layout.quanan_one_item,parent,false);
+        cuaHangDAO = new CuaHangDAO(context);
+        return new ShowCuaHangAdapter.ViewHolder(view);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        holder.storeName.setText(cuahang.get(position).getStoreName());
+        holder.storeLocation.setText(cuahang.get(position).getStoreDiaChi());
+        holder.storeRating.setText(String.valueOf(cuahang.get(position).getStoreDanhGia()));
+        holder.storeDelivery.setText(cuahang.get(position).getStoreMail());
+    }
+    @Override
+    public int getItemCount() {
+        return cuahang.size();
+    }
+
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+        public TextView storeName, storeLocation, storeRating, storeDelivery;
+        public ViewHolder(@NonNull View itemView) {
+            super(itemView);
+            storeName = itemView.findViewById(R.id.place_name);
+            storeLocation = itemView.findViewById(R.id.place_location);
+            storeRating = itemView.findViewById(R.id.place_rating);
+            storeDelivery = itemView.findViewById(R.id.place_delivery);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mListener.onStoreItemClick(getPosition());
+                }
+            });
+        }
+        @Override
+        public void onClick(View v) {
+
+        }
+    }
+    public interface OnStoreClickListener {
+        void onStoreItemClick(int position);
+//        void onPlaceFavoriteClick(Place place);
+    }
+
+}

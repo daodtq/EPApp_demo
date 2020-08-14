@@ -10,12 +10,13 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginBottom="50dp"
         android:layout_alignParentTop="true"
         android:background="@android:color/white">
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:orientation="vertical">
 
             <RelativeLayout
@@ -48,6 +49,7 @@
                         android:layout_weight="2">
 
                         <ImageView
+                            android:id="@+id/ivBack"
                             android:layout_width="20dp"
                             android:layout_height="20dp"
                             android:layout_centerInParent="true"
@@ -57,6 +59,7 @@
                     </RelativeLayout>
 
                     <TextView
+                        android:id="@+id/txtStoreName"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="8"
@@ -112,6 +115,7 @@
                                 android:tint="@color/green"/>
 
                             <TextView
+                                android:id="@+id/txtLocationStore"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="22 Quang Trung, P7, Q. Gò Vấp"
@@ -278,55 +282,11 @@
             <RelativeLayout
                 android:id="@+id/place_header"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_marginTop="-20dp"
                 android:background="@drawable/background_item">
-
-                <!--<View-->
-                <!--android:id="@+id/view1"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="1dp"-->
-                <!--android:layout_marginTop="15dp"-->
-                <!--android:background="@color/overlay_dark_10"/>-->
-
-                <!--<View-->
-                <!--android:id="@+id/view2"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="1dp"-->
-                <!--android:layout_marginTop="15dp"-->
-                <!--android:background="@color/overlay_dark_10"/>-->
-
-                <LinearLayout
-                    android:id="@+id/featured"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginBottom="5dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="GỢI Ý"
-                        android:textSize="16sp"
-                        android:textColor="@color/titleColor"
-                        android:layout_marginLeft="10dp" />
-
-                </LinearLayout>
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/feature_recycler"
-                    android:layout_height="180dp"
-                    android:layout_width="match_parent"
-                    android:layout_marginTop="10dp"
-                    android:layout_below="@+id/featured"
-                    tools:listitem="@layout/goi_y_cuahang"/>
-
                 <LinearLayout
                     android:id="@+id/menu"
-                    android:layout_below="@id/feature_recycler"
                     android:layout_marginTop="20sp"
                     android:layout_marginBottom="5dp"
                     android:layout_width="match_parent"
@@ -347,184 +307,25 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:orientation="vertical"
                     android:layout_below="@id/menu">
 
                     <LinearLayout
-                        android:id="@+id/menu_item1"
-                        android:layout_marginTop="10sp"
-                        android:layout_marginBottom="5dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="25dp"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="8"
-                            android:text="Đồ ăn"
-                            android:textSize="16sp"
-                            android:textColor="@color/titleColor"
-                            android:layout_marginLeft="10dp" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="10"
-                            android:textSize="18sp"
-                            android:gravity="end"
-                            android:layout_marginRight="15dp"
-                            android:textColor="@color/overlay_dark_30" />
-
-                        <ImageView
-                            android:id="@+id/arrow1"
-                            android:layout_width="0dp"
-                            android:layout_height="15dp"
-                            android:layout_weight="1"
-                            android:layout_gravity="center"
-                            android:layout_marginLeft="-15dp"
-                            android:tint="@color/overlay_dark_30"
-                            android:rotation="-90"
-                            android:src="@drawable/ic_back"/>
-
-                    </LinearLayout>
-
-                    <LinearLayout
                         android:id="@+id/menu_item_recycler1"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:gravity="center_vertical"
                         android:orientation="horizontal">
 
                         <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/recycler"
+                            android:id="@+id/recyclerStoreMenu"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-
-
+                            android:layout_height="match_parent">
                         </androidx.recyclerview.widget.RecyclerView>
 
                     </LinearLayout>
 
-                    <LinearLayout
-                        android:id="@+id/menu_item2"
-                        android:layout_marginTop="10sp"
-                        android:layout_marginBottom="5dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="25dp"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="8"
-                            android:text="Đồ uống"
-                            android:textSize="16sp"
-                            android:textColor="@color/titleColor"
-                            android:layout_marginLeft="10dp" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="10"
-                            android:textSize="18sp"
-                            android:gravity="end"
-                            android:layout_marginRight="15dp"
-                            android:textColor="@color/overlay_dark_30" />
-
-                        <ImageView
-                            android:id="@+id/arrow2"
-                            android:layout_width="0dp"
-                            android:layout_height="15dp"
-                            android:layout_weight="1"
-                            android:layout_gravity="center"
-                            android:layout_marginLeft="-15dp"
-                            android:tint="@color/overlay_dark_30"
-                            android:rotation="-90"
-                            android:src="@drawable/ic_back"/>
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/menu_item_recycler2"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal">
-
-                        <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/recycler2"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-
-
-                        </androidx.recyclerview.widget.RecyclerView>
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/menu_item3"
-                        android:layout_marginTop="10sp"
-                        android:layout_marginBottom="5dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="25dp"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="8"
-                            android:text="Khác"
-                            android:textSize="16sp"
-                            android:textColor="@color/titleColor"
-                            android:layout_marginLeft="10dp" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="10"
-                            android:textSize="18sp"
-                            android:gravity="end"
-                            android:layout_marginRight="15dp"
-                            android:textColor="@color/overlay_dark_30" />
-
-                        <ImageView
-                            android:id="@+id/arrow3"
-                            android:layout_width="0dp"
-                            android:layout_height="15dp"
-                            android:layout_weight="1"
-                            android:layout_gravity="center"
-                            android:layout_marginLeft="-15dp"
-                            android:tint="@color/overlay_dark_30"
-                            android:rotation="-90"
-                            android:src="@drawable/ic_back"/>
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/menu_item_recycler3"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center_vertical"
-                        android:layout_marginBottom="60dp"
-                        android:orientation="horizontal">
-
-                        <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/recycler3"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-
-
-                        </androidx.recyclerview.widget.RecyclerView>
-
-                    </LinearLayout>
 
                 </LinearLayout>
 

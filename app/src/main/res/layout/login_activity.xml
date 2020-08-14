@@ -99,7 +99,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/pbLogin"
             android:layout_marginLeft="20dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="-60dp"
             android:layout_marginRight="20dp"
             android:layout_marginBottom="20dp"
             android:background="@drawable/button_login"

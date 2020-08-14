@@ -5,6 +5,7 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
+import com.example.epapp_demo.fragment.ListRestaurantFragment;
 import com.example.epapp_demo.fragment.QlyCuaHangFragment;
 import com.example.epapp_demo.model.CuaHang;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -42,7 +43,7 @@ public class CuaHangDAO {
                         DataSnapshot next = (DataSnapshot) iterator.next();
                         CuaHang sach = next.getValue(CuaHang.class);
                         list.add(sach);
-                        QlyCuaHangFragment.cuaHangAdapte.notifyDataSetChanged();
+                       QlyCuaHangFragment.cuaHangAdapte.notifyDataSetChanged();
                     }
                 }
             }
@@ -53,7 +54,32 @@ public class CuaHangDAO {
         });
         return list;
     }
+    public ArrayList<CuaHang> getShowCuahang() {
 
+        final ArrayList<CuaHang> list = new ArrayList<CuaHang>();
+
+        mDatabase.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    list.clear();
+                    Iterable<DataSnapshot> dataSnapshotIterable = dataSnapshot.getChildren();
+                    Iterator<DataSnapshot> iterator = dataSnapshotIterable.iterator();
+                    while (iterator.hasNext()) {
+                        DataSnapshot next = (DataSnapshot) iterator.next();
+                        CuaHang sach = next.getValue(CuaHang.class);
+                        list.add(sach);
+                        ListRestaurantFragment.showcuaHangAdapter.notifyDataSetChanged();
+                    }
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+        return list;
+    }
 
     public void update(final CuaHang s) {
         mDatabase.addValueEventListener(new ValueEventListener() {

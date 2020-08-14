@@ -44,17 +44,17 @@ public class PlaceAdapter extends RecyclerView.Adapter<PlaceAdapter.ItemHolder>{
 
     public void setFavorite(int placeId) {
         if(mPlaces.size() > 0) {
-            for (int i = 0; i < mPlaces.size(); i++) {
-                if(mPlaces.get(i).getPlaceId() == placeId) {
-                    if (!mPlaces.get(i).isFavorite()) {
-                        mPlaces.get(i).setFavorite(true);
-                        break;
-                    } else {
-                        mPlaces.get(i).setFavorite(false);
-                        break;
+           for (int i = 0; i < mPlaces.size(); i++) {
+                    if(mPlaces.get(i).getPlaceId() == placeId) {
+                        if (!mPlaces.get(i).isFavorite()) {
+                            mPlaces.get(i).setFavorite(true);
+                            break;
+                        } else {
+                            mPlaces.get(i).setFavorite(false);
+                            break;
+                        }
                     }
                 }
-            }
         }
     }
 

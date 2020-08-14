@@ -128,6 +128,7 @@ public class LoginActivity extends AppCompatActivity {
                                             Toast.makeText(LoginActivity.this, "Đăng nhập thành công",
                                                     Toast.LENGTH_SHORT).show();
                                             final String userID = fAuth.getCurrentUser().getUid();
+                                            mData.child("KhachHang").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("userPass").setValue(pass);
                                             try {
                                                 mData.child("KhachHang").child(userID).addValueEventListener(new ValueEventListener() {
                                                     @Override
