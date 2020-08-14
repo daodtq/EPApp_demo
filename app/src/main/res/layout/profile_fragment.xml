@@ -145,9 +145,10 @@
 
                     <TextView
                         android:id="@+id/account_text"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Số điện thoại: "
+                        android:layout_weight="3"
+                        android:text="Điện thoại: "
                         android:textSize="16sp"
                         android:layout_gravity="center"
                         android:layout_marginLeft="10dp"
@@ -155,11 +156,12 @@
                         android:textColor="@color/black"/>
                     <TextView
                         android:id="@+id/tvPhoneProfile"
-                        android:layout_width="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
-                        android:textColor="@color/black"
+                        android:textColor="@color/grey_40"
                         android:textSize="16sp" />
 
                 </LinearLayout>
@@ -171,14 +173,16 @@
                 android:layout_below="@+id/linear1"
                 android:background="@color/grey_10"/>
             <LinearLayout
+                android:id="@+id/linear2"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_below="@id/view2"
                 android:orientation="horizontal">
                 <TextView
                     android:id="@+id/ngaysinh"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_weight="3"
                     android:text="Ngày sinh: "
                     android:textSize="16sp"
                     android:layout_gravity="center"
@@ -187,14 +191,51 @@
                     android:textColor="@color/black"/>
                 <TextView
                     android:id="@+id/tvNgaySinhProfile"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:layout_gravity="center"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
-                    android:textColor="@color/black"
+                    android:textColor="@color/grey_40"
                     android:textSize="16sp" />
 
             </LinearLayout>
+
+            <View
+                android:id="@+id/view6"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/linear2"
+                android:background="@color/grey_10"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_below="@id/view6"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/diachi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Địa chỉ: "
+                    android:textSize="16sp"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
+                    android:textColor="@color/black"/>
+                <TextView
+                    android:id="@+id/tvDiaChiProfile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_gravity="center"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
+                    android:textColor="@color/grey_40"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+
         </RelativeLayout>
 
     </androidx.cardview.widget.CardView>
@@ -216,49 +257,49 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-            <LinearLayout
-                android:id="@+id/favorite_restaurants"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:orientation="horizontal">
+<!--            <LinearLayout-->
+<!--                android:id="@+id/favorite_restaurants"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="60dp"-->
+<!--                android:orientation="horizontal">-->
 
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    android:layout_weight="8">
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="60dp"
-                        android:layout_weight="8">
+<!--                <LinearLayout-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:orientation="horizontal"-->
+<!--                    android:layout_weight="8">-->
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="60dp"-->
+<!--                        android:layout_weight="8">-->
 
-                        <TextView
-                            android:id="@+id/diachi"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Địa chỉ:"
-                            android:textSize="16sp"
-                            android:layout_gravity="center"
-                            android:layout_marginLeft="10dp"
-                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
-                            android:textColor="@color/black"/>
-                        <TextView
-                            android:id="@+id/tvDiaChiProfile"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginLeft="5dp"
-                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
-                            android:textColor="@color/black"
-                            android:textSize="16sp" />
+<!--                        <TextView-->
+<!--                            android:id="@+id/diachi"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="Địa chỉ:"-->
+<!--                            android:textSize="16sp"-->
+<!--                            android:layout_gravity="center"-->
+<!--                            android:layout_marginLeft="10dp"-->
+<!--                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"-->
+<!--                            android:textColor="@color/black"/>-->
+<!--                        <TextView-->
+<!--                            android:id="@+id/tvDiaChiProfile"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_gravity="center"-->
+<!--                            android:layout_marginLeft="5dp"-->
+<!--                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"-->
+<!--                            android:textColor="@color/grey_40"-->
+<!--                            android:textSize="16sp" />-->
 
-                    </LinearLayout>
-
-
-                </LinearLayout>
+<!--                    </LinearLayout>-->
 
 
-            </LinearLayout>
+<!--                </LinearLayout>-->
+
+
+<!--            </LinearLayout>-->
             <View
                 android:id="@+id/view3"
                 android:layout_width="match_parent"
@@ -268,7 +309,6 @@
             <RelativeLayout
                 android:id="@+id/doimk"
                 android:layout_width="match_parent"
-                android:layout_below="@id/favorite_restaurants"
                 android:layout_height="60dp">
                 <TextView
                     android:id="@+id/txtDoiThongTin"
