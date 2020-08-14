@@ -76,9 +76,6 @@ public class LoginActivity extends AppCompatActivity {
                                 finish();
                             }
                         } catch (Exception e) {
-                            Intent i = new Intent(LoginActivity.this, Bottom_Navigation_CuaHang_Activity.class);
-                            startActivity(i);
-                            finish();
                         }
                     }
 

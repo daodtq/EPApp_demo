@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -13,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.epapp_demo.DAO.CuaHangDAO;
 import com.example.epapp_demo.R;
 import com.example.epapp_demo.model.CuaHang;
-import com.example.epapp_demo.model.Place;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -59,6 +60,7 @@ public class ShowCuaHangAdapter extends RecyclerView.Adapter<ShowCuaHangAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        Picasso.with(context).load(cuahang.get(position).getStoreHinhAnh()).into(holder.ivStorePicture);
         holder.storeName.setText(cuahang.get(position).getStoreName());
         holder.storeLocation.setText(cuahang.get(position).getStoreDiaChi());
         holder.storeRating.setText(String.valueOf(cuahang.get(position).getStoreDanhGia()));
@@ -71,12 +73,14 @@ public class ShowCuaHangAdapter extends RecyclerView.Adapter<ShowCuaHangAdapter.
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         public TextView storeName, storeLocation, storeRating, storeDelivery;
+        public ImageView ivStorePicture;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             storeName = itemView.findViewById(R.id.place_name);
             storeLocation = itemView.findViewById(R.id.place_location);
             storeRating = itemView.findViewById(R.id.place_rating);
             storeDelivery = itemView.findViewById(R.id.place_delivery);
+            ivStorePicture = itemView.findViewById(R.id.ivStorePicture);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

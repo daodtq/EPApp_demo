@@ -14,4 +14,12 @@
         <item name="colorControlNormal">@color/white</item>
         <item name="colorControlActivated">@color/yellow_600</item>
     </style>
+    <style name="theme_dialog" parent="ThemeOverlay.AppCompat.Light">
+        <item name="android:windowMinWidthMajor">100%</item>
+        <item name="android:windowMinWidthMinor">100%</item>
+    </style>
+    <style name="DialogAnimation">
+        <item name="android:windowEnterAnimation">@anim/slide_up_dialog</item>
+        <item name="android:windowExitAnimation">@anim/slide_bottom</item>
+    </style>
 </resources>
