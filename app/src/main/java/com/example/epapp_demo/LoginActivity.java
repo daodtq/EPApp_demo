@@ -1,6 +1,7 @@
 package com.example.epapp_demo;
 
 import android.app.FragmentTransaction;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
@@ -58,6 +59,12 @@ public class LoginActivity extends AppCompatActivity {
 
         pb = findViewById(R.id.pbLogin);
 
+        final ProgressDialog dialog=new ProgressDialog(LoginActivity.this);
+        dialog.setMessage("Vui lòng đợi");
+        dialog.setCancelable(false);
+        dialog.setInverseBackgroundForced(false);
+        dialog.show();
+
 
         if (mAuth.getCurrentUser() != null){
             final String userID= fAuth.getCurrentUser().getUid();
@@ -74,11 +81,13 @@ public class LoginActivity extends AppCompatActivity {
                                 Intent i = new Intent(LoginActivity.this, BottomNavigation.class);
                                 startActivity(i);
                                 finish();
+                                dialog.hide();
                             }
                         } catch (Exception e) {
                             Intent i = new Intent(LoginActivity.this, Bottom_Navigation_CuaHang_Activity.class);
                             startActivity(i);
                             finish();
+                            dialog.hide();
                         }
                     }
 
@@ -96,6 +105,7 @@ public class LoginActivity extends AppCompatActivity {
                         Intent i = new Intent(LoginActivity.this, Bottom_Navigation_CuaHang_Activity.class);
                         startActivity(i);
                         finish();
+                        dialog.hide();
                     }
                     @Override
                     public void onCancelled(@NonNull DatabaseError databaseError) {
@@ -104,6 +114,8 @@ public class LoginActivity extends AppCompatActivity {
                 });
             }
 
+        }else {
+            dialog.hide();
         }
 
         btnLogin.setOnClickListener(new View.OnClickListener() {

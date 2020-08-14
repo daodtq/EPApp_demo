@@ -6,6 +6,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.LinearLayoutCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -104,7 +105,7 @@ public class ShowMenuStoreFragment extends Fragment {
                 TextView tv_tenmonan = dialog.findViewById(R.id.tv_tenmonan);
                 TextView tv_gia = dialog.findViewById(R.id.tv_gia);
                 final Button btn_add_to_cart = dialog.findViewById(R.id.btn_add_to_cart);
-                ImageView btn_cancel = dialog.findViewById(R.id.btn_cancel);
+                LinearLayoutCompat btn_cancel = dialog.findViewById(R.id.btn_cancel);
                 final ElegantNumberButton btn_soluong = dialog.findViewById(R.id.btn_soluong);
                 //set default so luong
                 btn_soluong.setRange(1, 10);
@@ -128,6 +129,12 @@ public class ShowMenuStoreFragment extends Fragment {
                         soluong = Integer.parseInt(btn_soluong.getNumber());
                         tonggia = soluong * list.get(position).getGiaMonAn();
                         btn_add_to_cart.setText("Thêm vào giỏ hàng - " + formatter.format(tonggia) + " VND");
+                    }
+                });
+                btn_cancel.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        dialog.dismiss();
                     }
                 });
             }

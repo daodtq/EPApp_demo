@@ -138,7 +138,7 @@
                                         android:id="@+id/place_delivery"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="Free Delivery"
+                                        android:text="Đặt ngay"
                                         android:textColor="@color/white"
                                         android:textSize="12sp"/>
 

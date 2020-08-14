@@ -11,8 +11,8 @@
         android:topLeftRadius="25dp"
         android:topRightRadius="25dp" />
     <gradient
-        android:endColor="#EEEEEE"
-        android:startColor="#EEEEEE" />
+        android:endColor="@color/green"
+        android:startColor="@color/green" />
 
 
 </shape>
