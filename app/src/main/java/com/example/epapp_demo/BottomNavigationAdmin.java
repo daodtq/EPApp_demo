@@ -7,13 +7,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
-import com.example.epapp_demo.fragment.Hoat_Dong_Cua_Hang_Fragment;
-import com.example.epapp_demo.fragment.Home_Cua_Hang_Fragment;
-import com.example.epapp_demo.fragment.Mon_An_Cua_Hang_Fragment;
-import com.example.epapp_demo.fragment.PhanloaiFragment;
+import com.example.epapp_demo.fragment.PhanLoaiFragment;
 import com.example.epapp_demo.fragment.QlyCuaHangFragment;
 import com.example.epapp_demo.fragment.QlyKhachHangFragment;
-import com.example.epapp_demo.fragment.Tai_Khoan_Cua_Hang_Fragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class BottomNavigationAdmin extends AppCompatActivity {
@@ -50,7 +46,7 @@ public class BottomNavigationAdmin extends AppCompatActivity {
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_2, new QlyKhachHangFragment()).commit();
                     return true;
                 case R.id.theloaimonan:
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_2, new PhanloaiFragment()).commit();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_2, new PhanLoaiFragment()).commit();
                     return true;
 
             }
