@@ -65,6 +65,7 @@ public class PhanLoaiFragment extends Fragment {
                 final EditText motalaoi = view1.findViewById(R.id.edtMota);
                 final EditText anh = view1.findViewById(R.id.edtUrlAnh);
                 builder.setView(view1);
+
                 builder.setPositiveButton("Thêm", new DialogInterface.OnClickListener() {
                     @SuppressLint("RestrictedApi")
                     @Override
