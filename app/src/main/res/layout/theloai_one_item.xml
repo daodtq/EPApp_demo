@@ -22,10 +22,8 @@
             />
         <ImageView
             android:id="@+id/category_photo"
-            android:layout_marginLeft="18dp"
-            android:layout_marginTop="10dp"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:scaleType="centerCrop" />
 
         <TextView
@@ -37,10 +35,10 @@
             android:singleLine="true"
             android:text="Sushi"
             android:textSize="14sp"
-
             android:layout_gravity="bottom"
             android:gravity="center_horizontal"
-            android:textColor="@color/black" />
+            android:textStyle="bold"
+            android:textColor="@color/white" />
 
 
     </androidx.cardview.widget.CardView>

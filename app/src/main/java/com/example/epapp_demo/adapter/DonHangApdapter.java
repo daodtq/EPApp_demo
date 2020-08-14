@@ -52,6 +52,7 @@ public class DonHangApdapter extends RecyclerView.Adapter<DonHangApdapter.ViewHo
         holder.ivID.setText(list.get(position).getDHID());
         holder.ivThoiGian.setText(list.get(position).getDHThoiGian());
         holder.ivTrangThai.setText(list.get(position).getDHTrangThai());
+
         mData.child("CuaHang").child(i).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

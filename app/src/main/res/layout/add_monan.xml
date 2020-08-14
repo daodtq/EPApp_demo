@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:background="@color/green"
+    android:layout_margin="16dp">
     <LinearLayout
         android:layout_width="match_parent"
         android:orientation="vertical"
@@ -15,9 +16,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="3"
-                android:text="Tên loại"/>
+                android:text="Tên món"/>
             <EditText
-                android:id="@+id/edttenlaoi"
+                android:id="@+id/edtTenMon"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -31,9 +32,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="3"
-                android:text="mô tả"/>
-            <EditText
-                android:id="@+id/edtMota"
+                android:text="Thể loại"/>
+            <Spinner
+                android:id="@+id/spnTheLoai"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -47,15 +48,45 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="3"
-                android:text="URL ảnh"/>
+                android:text="Mô tả"/>
             <EditText
-                android:id="@+id/edtUrlAnh"
+                android:id="@+id/edtMotaMon"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:hint=""/>
         </LinearLayout>
-
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:text="Giá"/>
+            <EditText
+                android:id="@+id/edtGiaMon"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint=""/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:text="URL món ăn"/>
+            <EditText
+                android:id="@+id/edtUrlMon"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint=""/>
+        </LinearLayout>
     </LinearLayout>
-
 </androidx.cardview.widget.CardView>

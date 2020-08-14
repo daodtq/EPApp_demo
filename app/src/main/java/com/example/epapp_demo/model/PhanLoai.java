@@ -6,15 +6,8 @@ public class PhanLoai implements Serializable {
     private String LoaiID;
     private String NameLoai;
     private String mota;
+    private String hinhanh;
 
-    public PhanLoai() {
-    }
-
-    public PhanLoai(String loaiID, String nameLoai, String mota) {
-        LoaiID = loaiID;
-        NameLoai = nameLoai;
-        this.mota = mota;
-    }
     public String getLoaiID() {
         return LoaiID;
     }
@@ -39,10 +32,31 @@ public class PhanLoai implements Serializable {
         this.mota = mota;
     }
 
-    public void getLaoiID(String malaoi) {
+    public String getHinhanh() {
+        return hinhanh;
     }
 
-    public void getLoaiID(String maSach) {
+    public void setHinhanh(String hinhanh) {
+        this.hinhanh = hinhanh;
+    }
+
+    public PhanLoai() {
+    }
+
+    public PhanLoai(String loaiID, String nameLoai, String mota, String hinhanh) {
+        LoaiID = loaiID;
+        NameLoai = nameLoai;
+        this.mota = mota;
+        this.hinhanh = hinhanh;
+    }
+
+    @Override
+    public String toString() {
+        return NameLoai;
+    }
+
+    public String getLoaiID(String maSach) {
+        return LoaiID;
     }
 }
 

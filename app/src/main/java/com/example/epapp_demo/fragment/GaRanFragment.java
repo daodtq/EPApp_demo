@@ -11,11 +11,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.epapp_demo.R;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link GaRanFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class GaRanFragment extends Fragment {
 
 
