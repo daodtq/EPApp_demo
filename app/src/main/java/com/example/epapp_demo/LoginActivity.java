@@ -76,6 +76,9 @@ public class LoginActivity extends AppCompatActivity {
                                 finish();
                             }
                         } catch (Exception e) {
+                            Intent i = new Intent(LoginActivity.this, Bottom_Navigation_CuaHang_Activity.class);
+                            startActivity(i);
+                            finish();
                         }
                     }
 
@@ -107,27 +110,26 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(validateEmail() & validatePassword() == true){
-                    final String email = edtemail.getText().toString();
-                    final String pass = edtpassword.getText().toString();
+                    final String email1 = edtemail.getText().toString();
+                    final String pass1 = edtpassword.getText().toString();
                     pb.setVisibility(View.VISIBLE);
-                    if (email.equals("admin@gmail.com")&&pass.equals("admin1")){
+                    if (email1.equals("admin@gmail.com")&&pass1.equals("admin1")){
                         Intent i = new Intent(LoginActivity.this, BottomNavigationAdmin.class);
                         startActivity(i);
                         finish();
                     }else {
 
 
-                        mAuth.signInWithEmailAndPassword(email, pass)
+                        mAuth.signInWithEmailAndPassword(email1, pass1)
                                 .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
                                     @Override
                                     public void onComplete(@NonNull Task<AuthResult> task) {
                                         if (task.isSuccessful()) {
                                             Toast.makeText(LoginActivity.this, "Đăng nhập thành công",
                                                     Toast.LENGTH_SHORT).show();
-                                            final String userID = fAuth.getCurrentUser().getUid();
-                                            mData.child("KhachHang").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("userPass").setValue(pass);
+                                            final String userId = fAuth.getCurrentUser().getUid();
                                             try {
-                                                mData.child("KhachHang").child(userID).addValueEventListener(new ValueEventListener() {
+                                                mData.child("KhachHang").child(userId).addValueEventListener(new ValueEventListener() {
                                                     @Override
                                                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
@@ -136,6 +138,9 @@ public class LoginActivity extends AppCompatActivity {
                                                             Log.d("abcxyz", String.valueOf(user));
                                                             int phanquyen = user.getPhanQuyen();
                                                             if (phanquyen == 0) {
+                                                                FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+                                                                DatabaseReference databaseReference1 = firebaseDatabase.getReference("KhachHang");
+                                                                databaseReference1.child(userId).child("userPass").setValue(pass1);
                                                                 Intent i = new Intent(LoginActivity.this, BottomNavigation.class);
                                                                 startActivity(i);
                                                                 finish();
@@ -155,7 +160,7 @@ public class LoginActivity extends AppCompatActivity {
                                                     }
                                                 });
                                             } catch (Exception e) {
-                                                mData.child("CuaHang").child(userID).addValueEventListener(new ValueEventListener() {
+                                                mData.child("CuaHang").child(userId).addValueEventListener(new ValueEventListener() {
                                                     @Override
                                                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                                         CuaHang user = dataSnapshot.getValue(CuaHang.class);

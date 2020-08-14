@@ -5,12 +5,8 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
-import com.example.epapp_demo.adapter.CategoriesAdapter;
 import com.example.epapp_demo.fragment.HomeFragment;
-import com.example.epapp_demo.fragment.Mon_An_Cua_Hang_Fragment;
 import com.example.epapp_demo.fragment.PhanloaiFragment;
-import com.example.epapp_demo.model.CuaHang;
-import com.example.epapp_demo.model.KhachHang;
 import com.example.epapp_demo.model.PhanLoai;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
