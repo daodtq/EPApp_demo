@@ -77,7 +77,7 @@ public class PhanLoaiFragment extends Fragment {
                         phanLoaiDAO.insert(s);
 
                     }
-                }).setNegativeButton("Hủy", new DialogInterface.OnClickListener() {
+                }).setNegativeButton("Hủyyyy", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
