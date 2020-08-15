@@ -130,7 +130,7 @@
                 android:id="@+id/trending_recycler_view"
                 android:layout_below="@id/category_title"
                 android:layout_margin="8dp"
-                android:layout_height="110dp"
+                android:layout_height="wrap_content"
                 android:layout_width="match_parent"
                 android:orientation="horizontal"/>
 

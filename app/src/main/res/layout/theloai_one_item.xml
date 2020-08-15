@@ -20,11 +20,18 @@
             android:background="@drawable/border"
             android:alpha="1"
             />
+    <androidx.cardview.widget.CardView
+        android:layout_width="95dp"
+        android:layout_height="95dp"
+        android:layout_gravity="center"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="1dp">
         <ImageView
             android:id="@+id/category_photo"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop" />
+    </androidx.cardview.widget.CardView>
 
 
 
