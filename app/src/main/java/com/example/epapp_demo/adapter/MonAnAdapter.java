@@ -33,6 +33,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,6 +42,7 @@ public class MonAnAdapter extends RecyclerView.Adapter<MonAnAdapter.ViewHolder> 
     List<MonAn> list;
     Context context;
     MonAnDAO monAnDAO;
+    DecimalFormat formatter = new DecimalFormat("###,###,###");
     DatabaseReference mData = FirebaseDatabase.getInstance().getReference("MonAn");
     public MonAnAdapter(List<MonAn> list, Context context){
         this.list = list;
@@ -64,7 +66,7 @@ public class MonAnAdapter extends RecyclerView.Adapter<MonAnAdapter.ViewHolder> 
 
         Picasso.with(context).load(list.get(position).getHinhAnhMonAn()).into(holder.anh_MA);
         holder.ten_Ma.setText(list.get(position).getNameMonAn());
-        holder.gia_MA.setText(list.get(position).getGiaMonAn()+" VNĐ");
+        holder.gia_MA.setText(formatter.format(list.get(position).getGiaMonAn())+" VND");
         holder.moTa_MA.setText(list.get(position).getMoTa());
 
         final MonAnDAO monAnDAO = new MonAnDAO(context);
