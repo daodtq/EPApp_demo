@@ -30,6 +30,11 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Vi
     PhanLoaiDAO phanLoaiDAO;
     DatabaseReference mData = FirebaseDatabase.getInstance().getReference();
 
+    private CategoriesAdapter.OnTheLoaiClickListener mListener;
+    public void setOnStoreItemClickListener (CategoriesAdapter.OnTheLoaiClickListener onTheLoaiItemClickListener){
+        mListener = onTheLoaiItemClickListener;
+    }
+
     public CategoriesAdapter(List<PhanLoai> list, Context context){
         this.list = list;
         this.context = context;
@@ -62,13 +67,21 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Vi
             super(itemView);
             name = itemView.findViewById(R.id.category_name);
             iv = itemView.findViewById(R.id.category_photo);
-            itemView.setOnClickListener(this);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    mListener.onTheLoaiItemClick(getPosition());
+                }
+            });
         }
 
         @Override
         public void onClick(View v) {
 
         }
+    }
+    public interface OnTheLoaiClickListener {
+        void onTheLoaiItemClick(int position);
     }
 }
 
