@@ -2,7 +2,10 @@ package com.example.epapp_demo;
 
 import android.app.FragmentTransaction;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -16,6 +19,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 
 import com.example.epapp_demo.fragment.HomeFragment;
@@ -43,21 +47,37 @@ public class LoginActivity extends AppCompatActivity {
     DatabaseReference mData = FirebaseDatabase.getInstance().getReference();
     FirebaseAuth fAuth = FirebaseAuth.getInstance();;
     ProgressBar pb;
+    LocationManager locationManager;
+    boolean GpsStatus;
+    int PERMISSION_ALL = 1;
+    public static boolean hasPermissions(Context context, String... permissions) {
+        if (context != null && permissions != null) {
+            for (String permission : permissions) {
+                if (ActivityCompat.checkSelfPermission(context, permission) != PackageManager.PERMISSION_GRANTED) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_activity);
         mAuth = FirebaseAuth.getInstance();
-        btnLogin = findViewById(R.id.btnSignIn);
-        txtSignUp = findViewById(R.id.txtSignUp);
-        edtemail = findViewById(R.id.edtEmail);
-        edtpassword = findViewById(R.id.edtPassword);
-        inputEmail = findViewById(R.id.inputEmail);
-        inputPass = findViewById(R.id.inputPass);
+        init();
         edtemail.addTextChangedListener(new LoginActivity.ValidationTextWatcher(edtemail));
         edtpassword.addTextChangedListener(new LoginActivity.ValidationTextWatcher(edtpassword));
 
-        pb = findViewById(R.id.pbLogin);
+        //cấp quyền
+        String[] PERMISSIONS = {
+                android.Manifest.permission.ACCESS_FINE_LOCATION,
+                android.Manifest.permission.ACCESS_COARSE_LOCATION
+        };
+
+        if (!hasPermissions(this, PERMISSIONS)) {
+            ActivityCompat.requestPermissions(this, PERMISSIONS, PERMISSION_ALL);
+        }
 
         final ProgressDialog dialog=new ProgressDialog(LoginActivity.this);
         dialog.setMessage("Vui lòng đợi");
@@ -150,6 +170,7 @@ public class LoginActivity extends AppCompatActivity {
                                                             Log.d("abcxyz", String.valueOf(user));
                                                             int phanquyen = user.getPhanQuyen();
                                                             if (phanquyen == 0) {
+                                                                CheckGpsStatus();
                                                                 FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
                                                                 DatabaseReference databaseReference1 = firebaseDatabase.getReference("KhachHang");
                                                                 databaseReference1.child(userId).child("userPass").setValue(pass1);
@@ -211,6 +232,19 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
+    //check GPS
+    public void CheckGpsStatus() {
+        locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        GpsStatus = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
+
+        if (GpsStatus == true) {
+            Intent intent = new Intent(LoginActivity.this, BottomNavigation.class);
+            startActivity(intent);
+        } else {
+            Toast.makeText(this, "Vui lòng bật vị trí thiết bị để tiếp tục ứng dụng!", Toast.LENGTH_SHORT).show();
+            pb.setVisibility(View.INVISIBLE);
+        }
+    }
     private void requestFocus(View view) {
         if (view.requestFocus()) {
             getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
@@ -271,5 +305,14 @@ public class LoginActivity extends AppCompatActivity {
                     break;
             }
         }
+    }
+    public void init(){
+        btnLogin = findViewById(R.id.btnSignIn);
+        txtSignUp = findViewById(R.id.txtSignUp);
+        edtemail = findViewById(R.id.edtEmail);
+        edtpassword = findViewById(R.id.edtPassword);
+        inputEmail = findViewById(R.id.inputEmail);
+        inputPass = findViewById(R.id.inputPass);
+        pb = findViewById(R.id.pbLogin);
     }
 }
