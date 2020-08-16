@@ -46,6 +46,7 @@ public class ShowMenuStoreFragment extends Fragment {
     public static String idStore;
     public static ShowMenuStoreAdapter showMenuStoreAdapter;
     RecyclerView recyclerMenu;
+    String idCuahangGan;
     CuaHangDAO cuaHangDAO;
     Integer soluong, tonggia;
     ShowMenuDAO showMenuDAO;
@@ -73,6 +74,7 @@ public class ShowMenuStoreFragment extends Fragment {
         storeLocation = view.findViewById(R.id.txtLocationStore);
         recyclerMenu = view.findViewById(R.id.recyclerStoreMenu);
         showMenuDAO = new ShowMenuDAO(getActivity());
+//        idCuahangGan = getIn
         LinearLayoutManager place = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         recyclerMenu.setLayoutManager(place);
         list = showMenuDAO.getMonAnByCuaHangID(idStore);

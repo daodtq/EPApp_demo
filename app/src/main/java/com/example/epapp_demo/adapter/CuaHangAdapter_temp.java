@@ -18,7 +18,6 @@ import android.widget.TextView;
 
 import androidx.annotation.RequiresApi;
 
-import com.example.epapp_demo.LoginActivity;
 import com.example.epapp_demo.R;
 import com.example.epapp_demo.model.CuaHang_temp;
 import com.squareup.picasso.Picasso;
@@ -32,6 +31,10 @@ public class CuaHangAdapter_temp extends ArrayAdapter<CuaHang_temp> {
     Activity context;
     int resource;
     List<CuaHang_temp> objects;
+    private CuaHangAdapter_temp.OnCuaHangGanClickListener mListener;
+    public void setOnCuaHangGanItemClickListener (CuaHangAdapter_temp.OnCuaHangGanClickListener onCuaHangGanItemClickListener){
+        mListener = onCuaHangGanItemClickListener;
+    }
 
     public CuaHangAdapter_temp(Activity context, int resource, List<CuaHang_temp> objects) {
         super(context, resource, objects);
@@ -42,12 +45,12 @@ public class CuaHangAdapter_temp extends ArrayAdapter<CuaHang_temp> {
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         ViewHolder viewHolder;
         if (convertView == null) {
             viewHolder = new ViewHolder();
             LayoutInflater inflater = this.context.getLayoutInflater();
-            convertView = inflater.inflate(this.resource, null);
+            convertView = inflater.inflate(R.layout.item_cuahang_gan, null);
             viewHolder.img_cuahang = convertView.findViewById(R.id.img_cuahang);
             viewHolder.tv_tenquan = convertView.findViewById(R.id.tv_tenquan);
             viewHolder.tv_diachi = convertView.findViewById(R.id.tv_address);
@@ -76,43 +79,34 @@ public class CuaHangAdapter_temp extends ArrayAdapter<CuaHang_temp> {
         } catch (Exception e) {
 
         }
-
         viewHolder.item_cuahang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, LoginActivity.class);
-                intent.putExtra("macuahang", cuaHang.getMacuahang());
-                context.startActivity(intent);
+                mListener.onCuaHangGanItemClick(position);
             }
         });
 
         LocationManager manager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
         if (context.checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && context.checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    Activity#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for Activity#requestPermissions for more details.
         }
 
         Location location = manager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
         if (location != null) {
             viewHolder.tv_khoangcach.setText(distanceBetween2Points(location.getLatitude(), location.getLongitude(), cuaHang.getLatitude(), cuaHang.getLongitude()) + " km");
         }
-
-//        //animation item
-//        Animation animation = AnimationUtils.loadAnimation(context, R.anim.anim_listview);
-//        convertView.startAnimation(animation);
-
         return convertView;
     }
 
-    static class ViewHolder {
+
+    static class ViewHolder implements OnCuaHangGanClickListener {
         ImageView img_cuahang;
         TextView tv_tenquan, tv_diachi, tv_rating, tv_khoangcach;
         LinearLayout item_cuahang;
+
+        @Override
+        public void onCuaHangGanItemClick(int position) {
+
+        }
     }
 
     public static String distanceBetween2Points(double la1, double lo1, double la2, double lo2) {
@@ -127,5 +121,9 @@ public class CuaHangAdapter_temp extends ArrayAdapter<CuaHang_temp> {
         //format number
         NumberFormat formatter = new DecimalFormat("#0.0");
         return formatter.format(d);
+    }
+    public interface OnCuaHangGanClickListener {
+        void onCuaHangGanItemClick(int position);
+//        void onPlaceFavoriteClick(Place place);
     }
 }
