@@ -6,7 +6,8 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 
 import com.example.epapp_demo.fragment.HomeFragment;
-import com.example.epapp_demo.fragment.PhanloaiFragment;
+import com.example.epapp_demo.fragment.Home_Cua_Hang_Fragment;
+import com.example.epapp_demo.fragment.PhanLoaiFragment;
 import com.example.epapp_demo.model.PhanLoai;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -62,7 +63,7 @@ public class PhanLoaiDAO {
                         DataSnapshot next = (DataSnapshot) iterator.next();
                         PhanLoai pl = next.getValue(PhanLoai.class);
                         list.add(pl);
-                        PhanloaiFragment.phanLoaiAdapter.notifyDataSetChanged();
+                        PhanLoaiFragment.phanLoaiAdapter.notifyDataSetChanged();
                     }
                 }
             }
@@ -87,10 +88,10 @@ public class PhanLoaiDAO {
                         DataSnapshot next = (DataSnapshot) iterator.next();
                         PhanLoai pl = next.getValue(PhanLoai.class);
                         list.add(pl);
-
                         HomeFragment.categoriesAdapter.notifyDataSetChanged();
                     }
                 }
+
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
@@ -137,7 +138,7 @@ public class PhanLoaiDAO {
                                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
                                     public void onSuccess(Void aVoid) {
-                                        PhanloaiFragment.phanLoaiAdapter.notifyDataSetChanged();
+                                        PhanLoaiFragment.phanLoaiAdapter.notifyDataSetChanged();
                                         Log.d("delete","delete Thanh cong");
                                     }
                                 })
@@ -164,7 +165,7 @@ public class PhanLoaiDAO {
                     if (data.child("loaiID").getValue(String.class).equalsIgnoreCase(s.getLoaiID())) {
                         PhanLoaiID = data.getKey();
                         Log.d("getKey", "onCreate: key :" + PhanLoaiID);
-                        PhanloaiFragment.phanLoaiAdapter.notifyDataSetChanged();
+                        PhanLoaiFragment.phanLoaiAdapter.notifyDataSetChanged();
                         mDatabase.child(PhanLoaiID).setValue(s)
                                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override

@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.epapp_demo.DAO.MonAnDAO;
@@ -34,6 +35,10 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Vi
         this.list = list;
         this.context = context;
         phanLoaiDAO = new PhanLoaiDAO(context);
+    }
+
+    public CategoriesAdapter(FragmentActivity activity) {
+
     }
 
     @NonNull
@@ -70,6 +75,8 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Vi
 
         }
     }
+
+
 }
 
 
