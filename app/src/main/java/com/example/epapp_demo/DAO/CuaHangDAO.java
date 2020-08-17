@@ -163,7 +163,7 @@ public class CuaHangDAO implements LocationListener {
                     CuaHang cuaHang = data.getValue(CuaHang.class);
                     if (location != null) {
                         double khoangcach = distanceBetween2Points(location.getLatitude(), location.getLongitude(), cuaHang.getStoreViDo(), cuaHang.getStoreKinhDo());
-                        if (khoangcach > 10) {
+                        if (khoangcach > 0) {
                             temp.add(new CuaHang_temp(
                                     cuaHang.getStoreID(),
                                     cuaHang.getStoreName(),
