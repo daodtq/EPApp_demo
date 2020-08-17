@@ -30,13 +30,10 @@ import com.example.epapp_demo.DAO.PhanLoaiDAO;
 import com.example.epapp_demo.R;
 import com.example.epapp_demo.adapter.CategoriesAdapter;
 import com.example.epapp_demo.adapter.CuaHangAdapter_temp;
-import com.example.epapp_demo.adapter.PhanLoaiAdapter;
 import com.example.epapp_demo.adapter.PlaceAdapter;
 import com.example.epapp_demo.adapter.SliderAdapter;
-import com.example.epapp_demo.model.CuaHang;
 import com.example.epapp_demo.model.CuaHang_temp;
 import com.example.epapp_demo.model.PhanLoai;
-import com.example.epapp_demo.model.Place;
 import com.smarteist.autoimageslider.IndicatorAnimations;
 import com.smarteist.autoimageslider.SliderAnimations;
 import com.smarteist.autoimageslider.SliderView;
@@ -56,7 +53,7 @@ public class HomeFragment extends Fragment implements LocationListener {
     ArrayList<PhanLoai> list = new ArrayList<>();
     boolean GpsStatus;
     PhanLoaiDAO phanLoaiDAO = new PhanLoaiDAO(getActivity());
-    ImageView btn_reaload;
+    ImageView btn_reload;
     LocationManager locationManager;
     public HomeFragment() {
         // Required empty public constructor
@@ -87,7 +84,7 @@ public class HomeFragment extends Fragment implements LocationListener {
         sliderView = view.findViewById(R.id.imgSlider);
         rcvCategories = (RecyclerView)view.findViewById(R.id.trending_recycler_view);
         rcvQuanGoiY = view.findViewById(R.id.place_recycler_view);
-        btn_reaload = view.findViewById(R.id.btn_reload);
+        btn_reload = view.findViewById(R.id.btn_reload);
         LinearLayoutManager llmTrending = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
         rcvCategories.setLayoutManager(llmTrending);
         list = phanLoaiDAO.getAllMenu();
@@ -107,13 +104,13 @@ public class HomeFragment extends Fragment implements LocationListener {
         sliderView.setAutoCycle(true);
         sliderView.startAutoCycle();
 
-        btn_reaload.setVisibility(View.INVISIBLE);
+        btn_reload.setVisibility(View.INVISIBLE);
         getTemp();
         if (location == null) {
-            btn_reaload.setVisibility(View.VISIBLE);
+            btn_reload.setVisibility(View.VISIBLE);
         }
 
-        btn_reaload.setOnClickListener(new View.OnClickListener() {
+        btn_reload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
@@ -121,10 +118,22 @@ public class HomeFragment extends Fragment implements LocationListener {
 
                 if (GpsStatus == true) {
                     getTemp();
-                    btn_reaload.setVisibility(View.INVISIBLE);
+                    btn_reload.setVisibility(View.INVISIBLE);
                 } else {
                     Toast.makeText(getActivity(), "Bạn chưa bật vị trí của thiết bị!", Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+        cuaHangAdapter_temp.setOnCuaHangGanItemClickListener(new CuaHangAdapter_temp.OnCuaHangGanClickListener() {
+            @Override
+            public void onCuaHangGanItemClick(int position) {
+                CuaHang_temp cuaHangTemp = temp.get(position);
+                String idStore = cuaHangTemp.getMacuahang();
+                ShowMenuStoreFragment newFragment = new ShowMenuStoreFragment(idStore);
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.frame_layout, newFragment);
+                transaction.addToBackStack(null);
+                transaction.commit();
             }
         });
 
@@ -158,6 +167,4 @@ public class HomeFragment extends Fragment implements LocationListener {
         rcvQuanGoiY.setAdapter(cuaHangAdapter_temp);
         Log.d("size","temp: "+temp.size());
     }
-    public void init(){}
-
 }

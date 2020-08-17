@@ -46,10 +46,14 @@ public class ShowCuaHangAdapter extends RecyclerView.Adapter<ShowCuaHangAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Picasso.with(context).load(cuahang.get(position).getStoreHinhAnh()).into(holder.ivStorePicture);
-        holder.storeName.setText(cuahang.get(position).getStoreName());
-        holder.storeLocation.setText(cuahang.get(position).getStoreDiaChi());
-        holder.storeRating.setText(String.valueOf(cuahang.get(position).getStoreDanhGia()));
+        try {
+            Picasso.with(context).load(cuahang.get(position).getStoreHinhAnh()).into(holder.ivStorePicture);
+            holder.storeName.setText(cuahang.get(position).getStoreName());
+            holder.storeLocation.setText(cuahang.get(position).getStoreDiaChi());
+            holder.storeRating.setText(String.valueOf(cuahang.get(position).getStoreDanhGia()));
+        }catch (Exception ex){
+
+        }
     }
     @Override
     public int getItemCount() {

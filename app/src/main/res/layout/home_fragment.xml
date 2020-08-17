@@ -19,7 +19,6 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
             <RelativeLayout
                 android:id="@+id/search_bar"
                 android:layout_width="wrap_content"
@@ -97,11 +96,11 @@
 
             <LinearLayout
                 android:id="@+id/category_title"
-                android:layout_marginTop="10dp"
                 android:layout_marginBottom="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
+                android:layout_marginTop="8dp"
                 android:layout_below="@id/ln1"
                 android:orientation="horizontal">
 
@@ -137,7 +136,7 @@
             <LinearLayout
                 android:id="@+id/product_title"
                 android:layout_below="@id/trending_recycler_view"
-                android:layout_marginTop="10dp"
+
                 android:layout_marginBottom="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -148,7 +147,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Quán gợi ý"
+                    android:text="Quán gần bạn"
                     android:textSize="22sp"
                     android:textColor="@color/black"
                     android:layout_marginLeft="15dp" />
