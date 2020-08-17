@@ -25,6 +25,7 @@ public class ListRestaurantFragment extends Fragment {
     CuaHangDAO cuaHangDAO;
     ArrayList <CuaHang> list = new ArrayList<>();
     public static ShowCuaHangAdapter showcuaHangAdapter;
+
     public ListRestaurantFragment() {
         // Required empty public constructor
     }

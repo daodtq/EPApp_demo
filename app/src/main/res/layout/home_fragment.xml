@@ -9,7 +9,7 @@
 
 
 
-    <androidx.core.widget.NestedScrollView
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_marginBottom="50dp"
         android:id="@+id/nsv"
@@ -19,7 +19,6 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
             <RelativeLayout
                 android:id="@+id/search_bar"
                 android:layout_width="wrap_content"
@@ -88,7 +87,7 @@
                     <com.smarteist.autoimageslider.SliderView
                         android:id="@+id/imgSlider"
                         android:layout_width="match_parent"
-                        android:layout_height="200dp"
+                        android:layout_height="match_parent"
                         />
 
                 </androidx.cardview.widget.CardView>
@@ -97,11 +96,11 @@
 
             <LinearLayout
                 android:id="@+id/category_title"
-                android:layout_marginTop="10dp"
                 android:layout_marginBottom="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
+                android:layout_marginTop="8dp"
                 android:layout_below="@id/ln1"
                 android:orientation="horizontal">
 
@@ -130,14 +129,14 @@
                 android:id="@+id/trending_recycler_view"
                 android:layout_below="@id/category_title"
                 android:layout_margin="8dp"
-                android:layout_height="110dp"
+                android:layout_height="wrap_content"
                 android:layout_width="match_parent"
                 android:orientation="horizontal"/>
 
             <LinearLayout
                 android:id="@+id/product_title"
                 android:layout_below="@id/trending_recycler_view"
-                android:layout_marginTop="10dp"
+
                 android:layout_marginBottom="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -148,7 +147,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Quán gợi ý"
+                    android:text="Quán gần bạn"
                     android:textSize="22sp"
                     android:textColor="@color/black"
                     android:layout_marginLeft="15dp" />
@@ -165,15 +164,22 @@
 
             </LinearLayout>
 
-            <androidx.recyclerview.widget.RecyclerView
+            <ListView
                 android:id="@+id/place_recycler_view"
                 android:layout_height="match_parent"
                 android:layout_margin="8dp"
                 android:layout_width="match_parent"
                 android:layout_marginBottom="10dp"
                 android:layout_below="@+id/product_title"/>
-
+            <ImageView
+                android:id="@+id/btn_reload"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginBottom="30dp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/ic_reload" />
         </RelativeLayout>
 
-    </androidx.core.widget.NestedScrollView>
+    </RelativeLayout>
 </RelativeLayout>

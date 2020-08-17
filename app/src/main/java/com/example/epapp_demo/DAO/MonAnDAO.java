@@ -5,9 +5,11 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
+import com.example.epapp_demo.fragment.Hoat_Dong_Cua_Hang_Fragment;
 import com.example.epapp_demo.fragment.Mon_An_Cua_Hang_Fragment;
 import com.example.epapp_demo.fragment.QlyCuaHangFragment;
 import com.example.epapp_demo.model.CuaHang;
+import com.example.epapp_demo.model.DonHang;
 import com.example.epapp_demo.model.MonAn;
 import com.example.epapp_demo.model.PhanLoai;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -30,7 +32,31 @@ public class MonAnDAO {
         this.context = context;
     }
 
-    public ArrayList<MonAn> getAll() {
+    public ArrayList<MonAn> getAll(String idCuaHang) {
+        final ArrayList<MonAn> list = new ArrayList<MonAn>();
+        mDatabase.orderByChild("storeID").equalTo(idCuaHang).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                list.clear();
+                for (DataSnapshot ds : dataSnapshot.getChildren()){
+                    ds.getKey();
+                    MonAn hd = ds.getValue(MonAn.class);
+                    list.add(hd);
+
+                }
+                Mon_An_Cua_Hang_Fragment.monAnAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+        return list;
+    }
+
+
+    public ArrayList<MonAn> getToanBoMonAn() {
 
         final ArrayList<MonAn> list = new ArrayList<MonAn>();
 

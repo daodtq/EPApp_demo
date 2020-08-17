@@ -1,5 +1,6 @@
 package com.example.epapp_demo.adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.epapp_demo.R;
+import com.example.epapp_demo.model.CuaHang_temp;
 import com.example.epapp_demo.model.Place;
 
 import java.util.ArrayList;
@@ -22,6 +24,8 @@ public class PlaceAdapter extends RecyclerView.Adapter<PlaceAdapter.ItemHolder>{
 
     private List<Place> mPlaces = new ArrayList<>();
     private Context context;
+    int resource;
+    List<CuaHang_temp> objects;
     private OnPlaceClickListener mListener;
     public void setOnPlaceItemClickListener (OnPlaceClickListener onPlaceItemClickListener){
         mListener = onPlaceItemClickListener;

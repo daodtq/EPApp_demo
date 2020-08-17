@@ -39,7 +39,7 @@
                 android:layout_height="wrap_content"
                 android:text="CỬA HÀNG"
                 android:layout_centerInParent="true"
-                android:textColor="@color/titleColor" />
+                android:textColor="@color/white" />
 
             <EditText
                 android:layout_width="0dp"

@@ -34,21 +34,7 @@ public class ShowCuaHangAdapter extends RecyclerView.Adapter<ShowCuaHangAdapter.
         this.context = context;
         cuaHangDAO = new CuaHangDAO(context);
     }
-//    public void setFavorite(int placeId) {
-//        if(cuaHangs.size() > 0) {
-//            for (int i = 0; i < cuaHangs.size(); i++) {
-//                if(cuaHangs.get(i).getStoreID().equals(placeId)) {
-//                    if (!cuaHangs.get(i).isFavorite()) {
-//                        cuaHangs.get(i).setFavorite(true);
-//                        break;
-//                    } else {
-//                        cuaHangs.get(i).setFavorite(false);
-//                        break;
-//                    }
-//                }
-//            }
-//        }
-//    }
+
 
     @NonNull
     @Override
@@ -60,11 +46,14 @@ public class ShowCuaHangAdapter extends RecyclerView.Adapter<ShowCuaHangAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Picasso.with(context).load(cuahang.get(position).getStoreHinhAnh()).into(holder.ivStorePicture);
-        holder.storeName.setText(cuahang.get(position).getStoreName());
-        holder.storeLocation.setText(cuahang.get(position).getStoreDiaChi());
-        holder.storeRating.setText(String.valueOf(cuahang.get(position).getStoreDanhGia()));
-        holder.storeDelivery.setText(cuahang.get(position).getStoreMail());
+        try {
+            Picasso.with(context).load(cuahang.get(position).getStoreHinhAnh()).into(holder.ivStorePicture);
+            holder.storeName.setText(cuahang.get(position).getStoreName());
+            holder.storeLocation.setText(cuahang.get(position).getStoreDiaChi());
+            holder.storeRating.setText(String.valueOf(cuahang.get(position).getStoreDanhGia()));
+        }catch (Exception ex){
+
+        }
     }
     @Override
     public int getItemCount() {
@@ -72,14 +61,13 @@ public class ShowCuaHangAdapter extends RecyclerView.Adapter<ShowCuaHangAdapter.
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
-        public TextView storeName, storeLocation, storeRating, storeDelivery;
+        public TextView storeName, storeLocation, storeRating ;
         public ImageView ivStorePicture;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             storeName = itemView.findViewById(R.id.place_name);
             storeLocation = itemView.findViewById(R.id.place_location);
             storeRating = itemView.findViewById(R.id.place_rating);
-            storeDelivery = itemView.findViewById(R.id.place_delivery);
             ivStorePicture = itemView.findViewById(R.id.ivStorePicture);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

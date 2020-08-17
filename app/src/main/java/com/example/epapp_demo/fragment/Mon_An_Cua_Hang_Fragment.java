@@ -58,11 +58,12 @@ public class Mon_An_Cua_Hang_Fragment extends Fragment {
         rcv = view.findViewById(R.id.recycler_mon_an_cua_hang);
         add = view.findViewById(R.id.btn_add_mon_an);
 
+        String i = mAuth.getCurrentUser().getUid();
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         rcv.setLayoutManager(layoutManager);
         mAuth = FirebaseAuth.getInstance();
-        list = monAnDAO.getAll();
+        list = monAnDAO.getAll(i);
         monAnAdapter = new MonAnAdapter(list,getActivity());
         rcv.setAdapter(monAnAdapter);
         final ArrayList<PhanLoai> listPL = new PhanLoaiDAO(getActivity()).getAllspn();
