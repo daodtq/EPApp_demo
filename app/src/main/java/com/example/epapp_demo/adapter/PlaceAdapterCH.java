@@ -34,11 +34,11 @@ public class PlaceAdapterCH extends RecyclerView.Adapter<PlaceAdapterCH.ItemHold
     public PlaceAdapterCH(Context context){
         this.context = context;
 
-        String[] placeNames = {"khuyến mãi cho cửa hàng mới", "Tháng tri ân",
-                "Quán yêu thích", "Tích điểm", "khuyến mãi khách hàng", "khuyến mãi", "khuyến  mãi", "khuyến mãi", "khuyến mãi", "khuyến mãi"};
+        String[] placeNames = {"Khuyến mãi cho cửa hàng mới", "Tháng tri ân",
+                "Quán yêu thích", "Tích điểm", "khuyến mãi khách hàng", "Khuyến mãi", "Khuyến  mãi", "Khuyến mãi", "Khuyến mãi", "Khuyến mãi"};
 
         String[] placeDelivery = {"sử dụng", "sử dụng",
-                "sử dụng", "sử dụng", "lấy mã", "lấy mã", "lấy mã", "sử dụng", "sử dụng", "sử dụng"};
+                "Sử dụng", "Sử dụng", "Sử dụng", "Sử dụng", "Sử dụng", "Sử dụng", "Sử dụng", "Sử dụng"};
 
         for (int i = 0; i < 10; i++){
             Place place = new Place((i + 1),placeNames[i], "Giảm: " + (i + 1)+"0%",

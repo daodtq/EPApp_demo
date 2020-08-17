@@ -21,6 +21,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.cepheuen.elegantnumberbutton.view.ElegantNumberButton;
 import com.example.epapp_demo.DAO.CuaHangDAO;
@@ -28,8 +29,10 @@ import com.example.epapp_demo.DAO.ShowMenuDAO;
 import com.example.epapp_demo.R;
 import com.example.epapp_demo.adapter.ShowCuaHangAdapter;
 import com.example.epapp_demo.adapter.ShowMenuStoreAdapter;
+import com.example.epapp_demo.localdb.DbHelper;
 import com.example.epapp_demo.model.CuaHang;
 import com.example.epapp_demo.model.DonHang;
+import com.example.epapp_demo.model.GioHang;
 import com.example.epapp_demo.model.MonAn;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -137,6 +140,25 @@ public class ShowMenuStoreFragment extends Fragment {
                     @Override
                     public void onClick(View view) {
                         dialog.dismiss();
+                    }
+                });
+
+                //Nút thêm vào giỏ hàng
+                btn_add_to_cart.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        String MonAnId = list.get(position).getMonAnID();
+                        String HoaDonId = null;
+                        int soLuong = soluong;
+                        GioHang gh = new GioHang(HoaDonId,MonAnId,soLuong);
+                        //1. Add vô ArrayList
+                        DbHelper.giohang.add(gh);
+                        //2. Add vô SQLite
+                        DbHelper db = new DbHelper(getContext());
+                        db.insertGH(gh);
+                        db.insertMonAn(list.get(position));
+                        dialog.dismiss();
+                        Toast.makeText(getActivity(), "Đã thêm vào giỏ hàng", Toast.LENGTH_SHORT).show();
                     }
                 });
             }

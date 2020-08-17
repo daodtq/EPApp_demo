@@ -84,7 +84,7 @@
                 android:fontFamily="@font/icielplanton"
                 android:text="thêm vào giỏ hàng"
                 android:textAlignment="center"
-                android:textColor="#000" />
+                android:textColor="@color/white" />
 
         </LinearLayout>
 

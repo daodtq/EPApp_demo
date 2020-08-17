@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import com.example.epapp_demo.fragment.Hoat_Dong_Cua_Hang_Fragment;
 import com.example.epapp_demo.fragment.Mon_An_Cua_Hang_Fragment;
 import com.example.epapp_demo.fragment.QlyCuaHangFragment;
+import com.example.epapp_demo.fragment.ShowMenuStoreFragment;
 import com.example.epapp_demo.model.CuaHang;
 import com.example.epapp_demo.model.DonHang;
 import com.example.epapp_demo.model.MonAn;
@@ -129,5 +130,29 @@ public class MonAnDAO {
                 Log.d("insert", "insert That bai");
             }
         });
+    }
+
+    public ArrayList<MonAn> getAllByIDMonAn(String idMonAn) {
+        final ArrayList<MonAn> list = new ArrayList<MonAn>();
+        mDatabase.orderByChild("monAnID").equalTo(idMonAn).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                list.clear();
+                for (DataSnapshot ds : dataSnapshot.getChildren()){
+                    ds.getKey();
+                    MonAn monAn = ds.getValue(MonAn.class);
+                    Log.d("ab1", monAn.getMonAnID());
+                    list.add(monAn);
+
+                }
+                ShowMenuStoreFragment.showMenuStoreAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+        return list;
     }
 }

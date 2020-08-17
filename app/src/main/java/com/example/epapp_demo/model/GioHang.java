@@ -2,20 +2,29 @@ package com.example.epapp_demo.model;
 
 import java.io.Serializable;
 
-class GioHang implements Serializable {
-    private String StoreID;
+public class GioHang implements Serializable {
+    private int gioHangId;
+    private String DonHangID;
     private String MonAnID;
-    private String NameMonAn;
+//    private String NameMonAn;
     private int SoLuong;
-    private int Gia;
-    private String HinhAnhGioHang;
+//    private int Gia;
+//    private String HinhAnhGioHang;
+
+    public int getGioHangId() {
+        return gioHangId;
+    }
+
+    public void setGioHangId(int gioHangId) {
+        this.gioHangId = gioHangId;
+    }
 
     public String getStoreID() {
-        return StoreID;
+        return DonHangID;
     }
 
     public void setStoreID(String storeID) {
-        StoreID = storeID;
+        DonHangID = storeID;
     }
 
     public String getMonAnID() {
@@ -26,13 +35,13 @@ class GioHang implements Serializable {
         MonAnID = monAnID;
     }
 
-    public String getNameMonAn() {
-        return NameMonAn;
-    }
-
-    public void setNameMonAn(String nameMonAn) {
-        NameMonAn = nameMonAn;
-    }
+//    public String getNameMonAn() {
+//        return NameMonAn;
+//    }
+//
+//    public void setNameMonAn(String nameMonAn) {
+//        NameMonAn = nameMonAn;
+//    }
 
     public int getSoLuong() {
         return SoLuong;
@@ -42,31 +51,35 @@ class GioHang implements Serializable {
         SoLuong = soLuong;
     }
 
-    public int getGia() {
-        return Gia;
-    }
-
-    public void setGia(int gia) {
-        Gia = gia;
-    }
-
-    public String getHinhAnhGioHang() {
-        return HinhAnhGioHang;
-    }
-
-    public void setHinhAnhGioHang(String hinhAnhGioHang) {
-        HinhAnhGioHang = hinhAnhGioHang;
-    }
+//    public int getGia() {
+//        return Gia;
+//    }
+//
+//    public void setGia(int gia) {
+//        Gia = gia;
+//    }
+//
+//    public String getHinhAnhGioHang() {
+//        return HinhAnhGioHang;
+//    }
+//
+//    public void setHinhAnhGioHang(String hinhAnhGioHang) {
+//        HinhAnhGioHang = hinhAnhGioHang;
+//    }
 
     public GioHang() {
     }
 
-    public GioHang(String storeID, String monAnID, String nameMonAn, int soLuong, int gia, String hinhAnhGioHang) {
-        StoreID = storeID;
+    public GioHang(String DonHangID, String monAnID, int soLuong) {
+        this.DonHangID = DonHangID;
         MonAnID = monAnID;
-        NameMonAn = nameMonAn;
         SoLuong = soLuong;
-        Gia = gia;
-        HinhAnhGioHang = hinhAnhGioHang;
+    }
+
+    public GioHang(int gioHangId, String DonHangID, String monAnID, int soLuong) {
+        this.gioHangId = gioHangId;
+        this.DonHangID = DonHangID;
+        MonAnID = monAnID;
+        SoLuong = soLuong;
     }
 }

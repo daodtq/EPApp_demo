@@ -27,6 +27,7 @@ import java.util.ArrayList;
 
 public class PhanLoaiFragment extends Fragment {
 
+    public static String id;
     PhanLoaiDAO phanLoaiDAO= new PhanLoaiDAO(getActivity());
     private FirebaseAuth mAuth;
     DatabaseReference mData = FirebaseDatabase.getInstance().getReference("PhanLoai");
@@ -88,6 +89,7 @@ public class PhanLoaiFragment extends Fragment {
                 builder.show();
             }
         });
+
         return view;
     }
 }
